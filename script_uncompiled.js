@@ -1,5 +1,3 @@
-'use strict';
-
 var $navBar = $('#nav');
 var $navBarItem = $navBar.find('li');
 var $navTriangles = $('.nav-triangle');
@@ -12,11 +10,11 @@ var $projectDesc = $('#project-desc');
 
 var changeNavColor = true;
 
-var canvases = [].slice.call(document.getElementsByClassName('edu-course-canvas'));
-var canvasesCount = canvases.length;
-var canvasScale = canvases[0].width;
-var canvasCenter = canvasScale / 2;
-var completeRadian = Math.PI * 2;
+const canvases = [].slice.call(document.getElementsByClassName('edu-course-canvas'));
+const canvasesCount = canvases.length;
+const canvasScale = canvases[0].width;
+const canvasCenter = canvasScale / 2;
+const completeRadian = Math.PI * 2;
 var canvasIndexOffset = 0;
 
 var eduAnimDone = false;
@@ -27,9 +25,9 @@ var projectDescOffset = 0;
 var projectDescFixed = false;
 
 $(window).scroll(function () {
-    var scrollPoint = $(this).scrollTop();
+    let scrollPoint = $(this).scrollTop();
 
-    $sectionDivs.each(function (i, e) {
+    $sectionDivs.each((i, e) => {
         if (scrollPoint + $(window).height() / 2 >= $(e).offset().top - 100 && scrollPoint + $(window).height() / 2 < $(e).offset().top + $(e).height()) {
             $navBarItem.eq(i).css('border-bottom-color', 'white');
             $navTriangles.eq(i).css('opacity', '1');
@@ -41,14 +39,15 @@ $(window).scroll(function () {
 
             $('#menu-container').addClass('height0');
         }
-    });
+    })
 
-    var scrollOpacity = scrollPoint / 250;
-    if (scrollOpacity < 1.1) $header.css({
-        'opacity': 1 - scrollOpacity,
-        'transform': 'scale(' + (1 - scrollPoint / 1100) + ')',
-        'margin-top': $header.css('margin-top') + scrollPoint / 8 + 'px'
-    });
+    let scrollOpacity = scrollPoint / 250;
+    if (scrollOpacity < 1.1)
+        $header.css({
+            'opacity': 1 - scrollOpacity,
+            'transform': 'scale(' + (1 - (scrollPoint / 1100)) + ')',
+            'margin-top': $header.css('margin-top') + (scrollPoint / 8) + 'px'
+        });
 
     if (scrollPoint > $wrapper.offset().top) {
         $navBar.css({
@@ -58,7 +57,9 @@ $(window).scroll(function () {
         $initials.addClass('initials-alt');
 
         changeNavColor = true;
-    } else if (changeNavColor) {
+    }
+
+    else if (changeNavColor) {
         $navBar.css('background-color', 'transparent');
 
         $initials.removeClass('initials-alt');
@@ -66,28 +67,39 @@ $(window).scroll(function () {
         changeNavColor = false;
     }
 
-    var bottomScroll = scrollPoint + $(window).height();
+    let bottomScroll = scrollPoint + $(window).height();
 
-    if (!eduAnimDone) doEducationAnimation(bottomScroll);else if (!skillAnimDone) doSkillAnimation(bottomScroll);else if (!projectsAnimDone) doProjectsAnimation(bottomScroll);else if (!projectDescFixed && bottomScroll > projectDescOffset && bottomScroll < projectDescOffset + $projectDesc.height() / 2) {
+    if(!eduAnimDone)
+        doEducationAnimation(bottomScroll);
+
+    else if (!skillAnimDone)
+        doSkillAnimation(bottomScroll);
+
+    else if (!projectsAnimDone)
+        doProjectsAnimation(bottomScroll);
+
+    else if (!projectDescFixed && bottomScroll > projectDescOffset && bottomScroll < projectDescOffset + $projectDesc.height() / 2) {
         $projectDesc.addClass('project-desc-fixed');
         $projects.addClass('bottom-padding');
         projectDescFixed = true;
-    } else if (projectDescFixed && bottomScroll > projectDescOffset + $projectDesc.height() / 1.3 || bottomScroll < projectDescOffset - $projectDesc.height() / 2) {
+    }
+
+    else if (projectDescFixed && bottomScroll > projectDescOffset + $projectDesc.height() / 1.3 || bottomScroll < projectDescOffset - $projectDesc.height() / 2) {
         $projectDesc.removeClass('project-desc-fixed');
         $projects.removeClass('bottom-padding');
         projectDescFixed = false;
     }
+
 });
 
 function doEducationAnimation(bottomScroll) {
-    var $eduCourseGrade = $('.edu-course-grade');
+    let $eduCourseGrade = $('.edu-course-grade');
+    while (canvasIndexOffset < canvasesCount && bottomScroll > $(canvases[0]).offset().top) {
 
-    var _loop = function _loop() {
-
-        var context = canvases[0].getContext('2d');
-        var end = $eduCourseGrade.eq(canvasIndexOffset).data('number') + 0.01;
-        var cur = 0;
-        var accel = 0.001;
+        let context = canvases[0].getContext('2d');
+        let end = $eduCourseGrade.eq(canvasIndexOffset).data('number') + 0.01;
+        let cur = 0;
+        let accel = 0.001;
         context.lineWidth = 8;
 
         (function animate(curr, stop) {
@@ -107,9 +119,7 @@ function doEducationAnimation(bottomScroll) {
 
             if (stop) return;
 
-            requestAnimationFrame(function () {
-                return cur <= end ? animate(cur) : animate(end, true);
-            });
+            requestAnimationFrame(() => cur <= end ? animate(cur) : animate(end, true));
 
             cur += accel;
             accel += 0.002;
@@ -118,30 +128,30 @@ function doEducationAnimation(bottomScroll) {
         canvasIndexOffset++;
         canvases.splice(0, 1);
 
-        if (canvasIndexOffset === canvasesCount) eduAnimDone = true;
-    };
-
-    while (canvasIndexOffset < canvasesCount && bottomScroll > $(canvases[0]).offset().top) {
-        _loop();
+        if (canvasIndexOffset === canvasesCount)
+            eduAnimDone = true;
     }
 }
 
 function doSkillAnimation(bottomScroll) {
-    $('.skill-progressbar').each(function (i, e) {
-        if (bottomScroll <= $(e).offset().top) return;
+    $('.skill-progressbar').each((i, e) => {
+        if (bottomScroll <= $(e).offset().top)
+            return;
         $(e).addClass('width' + $(e).data('progress'));
-        if (i === 10) skillAnimDone = true;
+        if (i === 10)
+            skillAnimDone = true;
     });
 }
 
 function doProjectsAnimation(bottomScroll) {
-    if (bottomScroll > $('#projects-text-svg').offset().top + $('#projects-text-svg').outerWidth() / 1.5) {
+    if (bottomScroll > $('#projects-text-svg').offset().top + ($('#projects-text-svg').outerWidth() / 1.5)) {
         $('#cir1').addClass('stroke-circle');
         $('#cir2').addClass('pop-circle');
         $('#projects-text').addClass('text-outline');
         $('#projects-tagline-text').addClass('semi-text-fadein');
         projectsAnimDone = true;
     }
+
 }
 
 $(window).on('resize', function () {
@@ -155,7 +165,8 @@ $(window).on('resize', function () {
         }, 600);
     }, 800);
 
-    if ($initials.height() != $initials.width()) $initials.width($initials.height());
+    if ($initials.height() != $initials.width())
+        $initials.width($initials.height());
 });
 
 $(window).on('beforeunload', function () {
@@ -167,7 +178,7 @@ $(window).on('beforeunload', function () {
         'font-size': '3vh',
         'margin-top': '6.8vh',
         'height': '12vh'
-    }, 1000, function () {
+    }, 1000, () => {
         $('#greeting').css({
             'position': 'relative',
             'left': '0',
@@ -180,18 +191,19 @@ $(window).on('beforeunload', function () {
 
     setNav();
 
-    if ($initials.height() != $initials.width()) $initials.width($initials.height());
+    if ($initials.height() != $initials.width())
+        $initials.width($initials.height());
 
-    setTimeout(function () {
+    setTimeout(() => {
         $('#design-text').css('border-right', '2px solid white');
-        "Design".split('').forEach(function (y, i) {
-            setTimeout(function () {
+        "Design".split('').forEach((y, i) => {
+            setTimeout(() => {
                 $('#design-text').append(y);
             }, i * 100);
         });
     }, 6400);
 
-    setTimeout(function () {
+    setTimeout(() => {
         $('#design-text').css('border-right', 'none');
         $('#and-text-mask').show();
         $('#and-text').show().animate({
@@ -199,18 +211,19 @@ $(window).on('beforeunload', function () {
         });
     }, 7000);
 
-    setTimeout(function () {
-        "Code".split('').forEach(function (y, i) {
-            setTimeout(function () {
+    setTimeout(() => {
+        "Code".split('').forEach((y, i) => {
+            setTimeout(() => {
                 $('#code-text').append('<span style = "background-color: white; color: black">' + y + '</span>');
-                if (i > 0) $('#code-text').children('span').eq(i - 1).css({
-                    'background-color': 'transparent',
-                    'color': 'white'
-                });
+                if (i > 0)
+                    $('#code-text').children('span').eq(i - 1).css({
+                        'background-color': 'transparent',
+                        'color': 'white'
+                    });
             }, i * 100);
         });
 
-        setTimeout(function () {
+        setTimeout(() => {
             $('#code-text').children('span').eq(3).css({
                 'background-color': 'transparent',
                 'color': 'white'
@@ -218,13 +231,11 @@ $(window).on('beforeunload', function () {
         }, 410);
     }, 7400);
 
-    $('#skip-button').click(function () {
-        $('#header-space').dequeue();
-    });
+    $('#skip-button').click(() => {$('#header-space').dequeue();});
 
     $('#header-space').delay(8500).animate({
         'height': '50vh'
-    }, 1400, function () {
+    }, 1400, () => {
         $('#nav').find('ul').css('margin-top', '0');
         $('.initials').css('top', '0');
         $('body').css('overflow', 'auto');
@@ -235,27 +246,28 @@ $(window).on('beforeunload', function () {
             $('#about-desc').addClass('fadeout');
 
             setTimeout(function () {
-                $('#about-desc').text('I make and screw with stuff.').removeClass('fadeout').addClass('fadein');
+                $('#about-desc').text('I make and screw with stuff.')
+                .removeClass('fadeout').addClass('fadein');
             }, 2000);
         }, 1000);
 
-        var bottomScroll = $(window).scrollTop() + $(window).height();
+        let bottomScroll = $(window).scrollTop() + $(window).height();
         doEducationAnimation(bottomScroll);
         doSkillAnimation(bottomScroll);
     });
 })();
 
 function setNav() {
-    var navbarHeight = $navBar.height();
-    $('#nav').find('li').each(function (i, e) {
-        $(e).on('click', function () {
+    let navbarHeight = $navBar.height();
+    $('#nav').find('li').each((i, e) => {
+        $(e).on('click', () => {
             $('html, body').animate({
                 scrollTop: $('#' + $(e).data('anchor')).offset().top - navbarHeight
             }, 1000);
         });
     });
 
-    $initials.on('click', function () {
+    $initials.on('click', () => {
         $('#menu-container').toggleClass('height0');
     });
 
@@ -263,8 +275,8 @@ function setNav() {
 }
 
 function setEducation() {
-    canvases.forEach(function (e) {
-        var context = e.getContext('2d');
+    canvases.forEach(e => {
+        let context = e.getContext('2d');
         context.lineWidth = 8;
         context.beginPath();
         context.strokeStyle = 'rgba(0,0,0,0.15)';
@@ -286,13 +298,15 @@ function setProjects() {
 
     $('#projects-scroller').height($('#projects-carousel').find('img').eq(-carouselOffset).outerHeight());
     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
-
-    var projectInfo = [[['Super Mario'], ['Java'], ['JavaFX'], ['A simple clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using pure JavaFX.']], [['MySQL-GUI'], ['Java'], ['Spring Framework | JDBC | Maven | Swing'], ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']], [['Falling Robots'], ['Java'], ['Becker Robots'], ['A simple java game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']]];
+    
+    var projectInfo = [
+        [['Super Mario'], ['Java'], ['JavaFX'], ['A simple clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using pure JavaFX.']],
+        [['MySQL-GUI'], ['Java'], ['Spring Framework | JDBC | Maven | Swing'], ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']],
+        [['Falling Robots'], ['Java'], ['Becker Robots'], ['A simple java game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']]
+    ];
 
     function updateProjectInfo() {
-        $projectAttr.each(function (i) {
-            return fadeTransformText($projectAttr.eq(i), projectInfo[-carouselOffset][i]);
-        });
+        $projectAttr.each(i => fadeTransformText($projectAttr.eq(i), projectInfo[-carouselOffset][i]));
 
         function fadeTransformText($element, text) {
             $projectAttrDiv.removeClass('fadein-fast').addClass('fadeout-fast');
@@ -308,20 +322,17 @@ function setProjects() {
 
     $('.stick-left').click(function () {
         switch (++carouselOffset) {
-            case 0:
-                setTimeout(function () {
-                    $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
-                }, 800);break;
+            case 0: setTimeout(function () {
+                $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
+            }, 800); break;
 
-            case 1:
-                carouselOffset = -2;
+            case 1: carouselOffset = -2;
                 setTimeout(function () {
                     $rightScrollButton.text('| <').css('letter-spacing', '-1vh');
                 }, 800);
-            default:
-                setTimeout(function () {
-                    $leftScrollButton.text('<<').css('letter-spacing', '-1.5vh');
-                }, 800);
+            default: setTimeout(function () {
+                $leftScrollButton.text('<<').css('letter-spacing', '-1.5vh');
+            }, 800);
         }
 
         updateProjectInfo();
@@ -335,20 +346,17 @@ function setProjects() {
 
     $('.stick-right').click(function () {
         switch (--carouselOffset) {
-            case -2:
-                setTimeout(function () {
-                    $rightScrollButton.text('| <').css('letter-spacing', '-1vh');
-                }, 800);break;
+            case -2: setTimeout(function () {
+                $rightScrollButton.text('| <').css('letter-spacing', '-1vh');
+            }, 800); break;
 
-            case -3:
-                carouselOffset = 0;
+            case -3: carouselOffset = 0;
                 setTimeout(function () {
                     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
                 }, 800);
-            default:
-                setTimeout(function () {
-                    $rightScrollButton.text('>>').css('letter-spacing', '-1.5vh');
-                }, 800);
+            default: setTimeout(function () {
+                $rightScrollButton.text('>>').css('letter-spacing', '-1.5vh');
+            }, 800);
         };
 
         updateProjectInfo();
@@ -364,9 +372,7 @@ function setProjects() {
 }
 
 function setContact() {
-    ['name', 'phone', 'email', 'message'].forEach(function (e) {
-        return $('#contact-' + e).on('input', function () {
-            return $('#contact-' + e + '-label').toggleClass('fadein-bottom', !!$('#contact-' + e).val());
-        });
-    });
+    ['name', 'phone', 'email', 'message'].forEach((e) =>
+        $('#contact-' + e).on('input', () => $('#contact-' + e + '-label').toggleClass('fadein-bottom', !!$('#contact-' + e).val()))
+    );
 }
