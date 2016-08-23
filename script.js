@@ -1,5 +1,3 @@
-'use strict'
-
 var $navBar = $('#nav');
 var $navBarItem = $navBar.find('li');
 var $navTriangles = $('.nav-triangle');

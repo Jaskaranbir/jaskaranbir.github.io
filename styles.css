@@ -18,6 +18,7 @@ body {
 }
 
 .transition {
+    -webkit-transition: all 0.7s cubic-bezier(0.65, 0.04, 0.96, 0.84);
     transition: all 0.7s cubic-bezier(0.65, 0.04, 0.96, 0.84);
 }
 
@@ -84,7 +85,8 @@ body {
     position: relative;
     top: 0.85vh;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     width: 0;
     border-style: solid;
     border-color: white transparent;
@@ -154,7 +156,8 @@ body {
 #greeting {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     font-size: 10vw;
     margin-top: 40vh;
 }
@@ -163,8 +166,32 @@ body {
     font-family: bitter;
     stroke-dasharray: 0;
     stroke-dashoffset: 100;
-    animation: text-outline-fadein-fast 5s linear;
-    animation-fill-mode: forwards;
+    -webkit-animation: text-outline-fadein-fast 5s linear;
+            animation: text-outline-fadein-fast 5s linear;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes text-outline-fadein-fast {
+    0% {
+        stroke: white;
+        fill: rgba(0,0,0, 0.3);
+    }
+
+    30% {
+        stroke: white;
+        fill: rgba(0,0,0, 0.3);
+        stroke-dasharray: 800;
+    }
+
+    40% {
+        fill: white;
+    }
+
+    100% {
+        stroke: transparent;
+        fill: white;
+    }
 }
 
 @keyframes text-outline-fadein-fast {
@@ -190,15 +217,21 @@ body {
 }
 
 #header-content > .header1 {
-    animation: fadein 1s linear;
-    animation-fill-mode: forwards;
-    animation-delay: 4.3s;
+    -webkit-animation: fadein 1s linear;
+            animation: fadein 1s linear;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-animation-delay: 4.3s;
+            animation-delay: 4.3s;
 }
 
 #header-desc {
-    animation: fadein-bottom 1s;
-    animation-fill-mode: forwards;
-    animation-delay: 5.5s;
+    -webkit-animation: fadein-bottom 1s;
+            animation: fadein-bottom 1s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-animation-delay: 5.5s;
+            animation-delay: 5.5s;
     line-height: 13.5vh;
 }
 
@@ -221,15 +254,19 @@ body {
     position: absolute;
     top: 70vh;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     cursor: pointer;
     opacity: 0.3;
     font-size: 6vh;
     font-family: Roboto;
     width: 53px;
-    animation: fadeout 1s linear;
-    animation-delay: 8s;
-    animation-fill-mode: forwards;
+    -webkit-animation: fadeout 1s linear;
+            animation: fadeout 1s linear;
+    -webkit-animation-delay: 8s;
+            animation-delay: 8s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
 }
 
 #wrapper {
@@ -244,7 +281,8 @@ body {
         position: absolute;
         margin-top: -25px;
         left: 50%;
-        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
         border-style: solid;
         border-color: #ED5446 transparent #ED5446;
         border-width: 0 40px 30px 40px;
@@ -266,18 +304,33 @@ body {
     margin-top: -40px;
     padding: 5px;
     white-space: nowrap;
-    animation: marquee 30s linear infinite;
+    -webkit-animation: marquee 30s linear infinite;
+            animation: marquee 30s linear infinite;
     color: rgba(255,255,255,0.5);
     font-family: roboto;
 }
 
-@keyframes marquee {
+@-webkit-keyframes marquee {
     from {
-        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
     }
 
     to {
-        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+    }
+}
+
+@keyframes marquee {
+    from {
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+    }
+
+    to {
+        -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
     }
 }
 
@@ -286,10 +339,12 @@ body {
     top: -50%;
     left: 50%;
     color: white;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     font-family: 'Berkshire Swash';
     color: rgba(255,255,255,0.6);
     z-index: 1;
+    background: -webkit-linear-gradient(left, transparent, #ED5446, transparent);
     background: linear-gradient(to right, transparent, #ED5446, transparent);
 }
 
@@ -341,7 +396,8 @@ body {
     float: right;
     position: relative;
     top: 50%;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
 }
 
 .edu-grades-container {
@@ -369,11 +425,13 @@ body {
     font-size: 24px;
     top: calc(50% - 2px);
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 .edu-course-canvas {
-    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
 }
 
 .edu-course-desc {
@@ -382,7 +440,8 @@ body {
     width: 311px;
     font-family: bitter;
     top: 50%;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
     text-align: left;
 }
 
@@ -434,7 +493,8 @@ body {
 .skill-dist-line {
     position: absolute;
     left: 10%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     margin-top: -62px;
     border: none;
     border-left: 2px dotted rgba(0,0,0,0.2);
@@ -498,6 +558,7 @@ body {
     margin-top: 45px;
     height: 3px;
     width: 100%;
+    background: -webkit-linear-gradient(left, transparent, lightgray, transparent);
     background: linear-gradient(to right, transparent, lightgray, transparent);
 }
 
@@ -540,6 +601,7 @@ body {
     height: inherit;
     background-color: #ED5446;
     display: inline-block;
+    -webkit-transition: width 1s ease-out;
     transition: width 1s ease-out;
 }
 
@@ -620,43 +682,71 @@ body {
 
 #cir1 {
     opacity: 0;
-    transform-origin: center;
+    -webkit-transform-origin: center;
+            transform-origin: center;
     stroke-width: 5px;
     stroke: white;
     stroke-dasharray: 1500;
     stroke-dashoffset: 1500;
-    transform: scale(0.2);
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
 }
 
 .stroke-circle {
-    animation: dash 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
-    animation-fill-mode: forwards;
+    -webkit-animation: dash 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+            animation: dash 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes dash {
+    to {
+        opacity: 1;
+        stroke-dashoffset: 0;
+        -webkit-transform: rotate(-90deg) scale(0.8);
+                transform: rotate(-90deg) scale(0.8);
+    }
 }
 
 @keyframes dash {
     to {
         opacity: 1;
         stroke-dashoffset: 0;
-        transform: rotate(-90deg) scale(0.8);
+        -webkit-transform: rotate(-90deg) scale(0.8);
+                transform: rotate(-90deg) scale(0.8);
     }
 }
 
 #cir2 {
-    transform: scale(0.2);
-    transform-origin: center;
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+    -webkit-transform-origin: center;
+            transform-origin: center;
     fill: transparent;
 }
 
 .pop-circle {
-    animation: pop-circle 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
-    animation-delay: 0.7s;
-    animation-fill-mode: forwards;
+    -webkit-animation: pop-circle 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+            animation: pop-circle 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+    -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes pop-circle {
+    to {
+        fill: rgba(0,0,0,0.4);
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
 }
 
 @keyframes pop-circle {
     to {
         fill: rgba(0,0,0,0.4);
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
     }
 }
 
@@ -669,8 +759,31 @@ body {
 }
 
 .text-outline {
-    animation: text-outline-fadein 5s cubic-bezier(0.69, 1.13, 0.01, 1.15);
-    animation-fill-mode: forwards;
+    -webkit-animation: text-outline-fadein 5s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+            animation: text-outline-fadein 5s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes text-outline-fadein {
+    0% {
+        stroke: white;
+    }
+
+    to {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 0;
+    }
+
+    30% {
+        stroke: white;
+        fill: transparent;
+    }
+
+    100% {
+        stroke: transparent;
+        fill: white;
+    }
 }
 
 @keyframes text-outline-fadein {
@@ -702,9 +815,12 @@ body {
 }
 
 .semi-text-fadein {
-    animation: semi-fadein 1s linear;
-    animation-delay: 2s;
-    animation-fill-mode: forwards;
+    -webkit-animation: semi-fadein 1s linear;
+            animation: semi-fadein 1s linear;
+    -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
 }
 
 #projects-scroller {
@@ -839,6 +955,7 @@ body {
     font-family: Roboto;
     font-weight: bold;
     top: 26px;
+    -webkit-transition: all 0.2s;
     transition: all 0.2s;
     color: rgba(93, 89, 86, 0.8);
 }
@@ -878,6 +995,7 @@ body {
     border: none;
     border-radius: 5px;
     font-size: 18px;
+    -webkit-transition: all 700ms linear;
     transition: all 700ms linear;
 }
 
@@ -901,24 +1019,42 @@ body {
 
 .fadein {
     opacity: 0;
-    animation: fadein 1s;
-    animation-delay: 0.5s;
-    animation-fill-mode: forwards;
+    -webkit-animation: fadein 1s;
+            animation: fadein 1s;
+    -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
 }
 
 .fadein-fast {
     opacity: 0;
-    animation: fadein 500ms;
-    animation-fill-mode: forwards;
+    -webkit-animation: fadein 500ms;
+            animation: fadein 500ms;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
 }
 
 .fadein-top {
-    animation: fadein-top 1s;
+    -webkit-animation: fadein-top 1s;
+            animation: fadein-top 1s;
+}
+
+@-webkit-keyframes semi-fadein {
+    to {
+        opacity: 0.4;
+    }
 }
 
 @keyframes semi-fadein {
     to {
         opacity: 0.4;
+    }
+}
+
+@-webkit-keyframes fadein {
+    to {
+        opacity: 1;
     }
 }
 
@@ -928,7 +1064,26 @@ body {
     }
 }
 
+@-webkit-keyframes fadein-top {
+    to {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
 @keyframes fadein-top {
+    to {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+@-webkit-keyframes fadein-bottom {
+    from {
+        opacity: 0;
+        margin-top: 20px;
+    }
+
     to {
         opacity: 1;
         margin-top: 0px;
@@ -948,14 +1103,25 @@ body {
 }
 
 .fadeout {
-    animation: fadeout 1s linear;
-    animation-delay: 1s;
-    animation-fill-mode: forwards;
+    -webkit-animation: fadeout 1s linear;
+            animation: fadeout 1s linear;
+    -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
 }
 
 .fadeout-fast {
-    animation: fadeout 500ms linear;
-    animation-fill-mode: forwards;
+    -webkit-animation: fadeout 500ms linear;
+            animation: fadeout 500ms linear;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeout {
+    to {
+        opacity: 0;
+    }
 }
 
 @keyframes fadeout {
@@ -971,7 +1137,8 @@ body {
 
     .initials {
         left: 50%;
-        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
         border-bottom: 2px solid white;
     }
 
@@ -1003,7 +1170,8 @@ body {
         width: 100%;
         height: 500%;
         left:0;
-        transition-duration: 250ms;
+        -webkit-transition-duration: 250ms;
+                transition-duration: 250ms;
     }
 
     #nav ul {
@@ -1017,6 +1185,7 @@ body {
     #nav li {
         display: block;
         padding-top: 0.6vh;
+        -webkit-transition: none;
         transition: none;
     }
 
@@ -1109,6 +1278,19 @@ body {
         opacity: 1;
     }
 
+    @-webkit-keyframes dash {
+        70% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            stroke-dashoffset: 0;
+            -webkit-transform: rotate(-90deg) scale(0.8);
+                    transform: rotate(-90deg) scale(0.8);
+        }
+    }
+
     @keyframes dash {
         70% {
             opacity: 1;
@@ -1117,7 +1299,8 @@ body {
         100% {
             opacity: 0;
             stroke-dashoffset: 0;
-            transform: rotate(-90deg) scale(0.8);
+            -webkit-transform: rotate(-90deg) scale(0.8);
+                    transform: rotate(-90deg) scale(0.8);
         }
     }
 
