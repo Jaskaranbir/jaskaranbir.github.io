@@ -27,7 +27,7 @@ var projectDescOffset = 0;
 var projectDescFixed = false;
 
 $(window).scroll(function () {
-    var scrollPoint = $(this).scrollTop();
+    var scrollPoint = $(window).scrollTop();
 
     $sectionDivs.each(function (i, e) {
         if (scrollPoint + $(window).height() / 2 >= $(e).offset().top - 100 && scrollPoint + $(window).height() / 2 < $(e).offset().top + $(e).height()) {
