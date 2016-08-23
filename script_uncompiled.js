@@ -24,8 +24,8 @@ var carouselOffset = 0;
 var projectDescOffset = 0;
 var projectDescFixed = false;
 
-$(window).scroll(function () {
-    let scrollPoint = $(this).scrollTop();
+$(window).scroll(() => {
+    let scrollPoint = $(window).scrollTop();
 
     $sectionDivs.each((i, e) => {
         if (scrollPoint + $(window).height() / 2 >= $(e).offset().top - 100 && scrollPoint + $(window).height() / 2 < $(e).offset().top + $(e).height()) {
@@ -154,13 +154,13 @@ function doProjectsAnimation(bottomScroll) {
 
 }
 
-$(window).on('resize', function () {
+$(window).on('resize', () => {
     $('.skill-dist-line').height($('#skills-content').height() - $('.skill-extra').height() + $('.skill-progress').height());
 
-    setTimeout(function () {
+    setTimeout(() => {
         $('#projects-scroller').height($('#projects-carousel img').eq(-carouselOffset).outerHeight());
 
-        setTimeout(function () {
+        setTimeout(() => {
             projectDescOffset = $projectDesc.offset().top + $projectDesc.height() / 2;
         }, 600);
     }, 800);
@@ -169,11 +169,11 @@ $(window).on('resize', function () {
         $initials.width($initials.height());
 });
 
-$(window).on('beforeunload', function () {
+$(window).on('beforeunload', () => {
     $(window).scrollTop(0);
 });
 
-(function () {
+(() => {
     $('#greeting').hide().fadeIn(2000).delay(100).animate({
         'font-size': '3vh',
         'margin-top': '6.8vh',
@@ -242,10 +242,10 @@ $(window).on('beforeunload', function () {
         $('#skip-button').remove();
         projectDescOffset = $projectDesc.offset().top + $projectDesc.height() / 2;
 
-        setTimeout(function () {
+        setTimeout(() => {
             $('#about-desc').addClass('fadeout');
 
-            setTimeout(function () {
+            setTimeout(() => {
                 $('#about-desc').text('I make and screw with stuff.')
                 .removeClass('fadeout').addClass('fadein');
             }, 2000);
@@ -311,7 +311,7 @@ function setProjects() {
         function fadeTransformText($element, text) {
             $projectAttrDiv.removeClass('fadein-fast').addClass('fadeout-fast');
 
-            setTimeout(function () {
+            setTimeout(() => {
                 $element.text(text);
                 $projectAttrDiv.removeClass('fadeout-fast').addClass('fadein-fast');
             }, 500);
@@ -320,17 +320,17 @@ function setProjects() {
 
     updateProjectInfo();
 
-    $('.stick-left').click(function () {
+    $('.stick-left').click(() => {
         switch (++carouselOffset) {
-            case 0: setTimeout(function () {
+            case 0: setTimeout(() => {
                 $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
             }, 800); break;
 
             case 1: carouselOffset = -2;
-                setTimeout(function () {
+                setTimeout(() => {
                     $rightScrollButton.text('| <').css('letter-spacing', '-1vh');
                 }, 800);
-            default: setTimeout(function () {
+            default: setTimeout(() => {
                 $leftScrollButton.text('<<').css('letter-spacing', '-1.5vh');
             }, 800);
         }
@@ -344,17 +344,17 @@ function setProjects() {
         $carouselContChild.eq(-carouselOffset).children().eq(0).removeClass('carousel-img-width-alt').addClass('carousel-img-width');
     });
 
-    $('.stick-right').click(function () {
+    $('.stick-right').click(() => {
         switch (--carouselOffset) {
-            case -2: setTimeout(function () {
+            case -2: setTimeout(() => {
                 $rightScrollButton.text('| <').css('letter-spacing', '-1vh');
             }, 800); break;
 
             case -3: carouselOffset = 0;
-                setTimeout(function () {
+                setTimeout(() => {
                     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
                 }, 800);
-            default: setTimeout(function () {
+            default: setTimeout(() => {
                 $rightScrollButton.text('>>').css('letter-spacing', '-1.5vh');
             }, 800);
         };
