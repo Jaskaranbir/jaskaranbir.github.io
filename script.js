@@ -2,6 +2,7 @@
 
 var isMobileDevice;
 
+var $window = $(window);
 var $navBar = $('#nav');
 var $navBarItem = $navBar.find('li');
 var $navTriangles = $('.nav-triangle');
@@ -28,11 +29,11 @@ var carouselOffset = 0;
 var projectDescOffset = 0;
 var projectDescFixed = false;
 
-$(window).scroll(function () {
-    var scrollPoint = $(window).scrollTop();
+$window.scroll(function () {
+    var scrollPoint = $window.scrollTop();
 
     $sectionDivs.each(function (i, e) {
-        if (scrollPoint + $(window).height() / 2 >= $(e).offset().top - 100 && scrollPoint + $(window).height() / 2 < $(e).offset().top + $(e).height()) {
+        if (scrollPoint + $window.height() / 2 >= $(e).offset().top - 100 && scrollPoint + $window.height() / 2 < $(e).offset().top + $(e).height()) {
             $navBarItem.eq(i).css('border-bottom-color', 'white');
             $navTriangles.eq(i).css('opacity', '1');
 
@@ -68,7 +69,7 @@ $(window).scroll(function () {
         changeNavColor = false;
     }
 
-    var bottomScroll = scrollPoint + $(window).height();
+    var bottomScroll = scrollPoint + $window.height();
 
     if (!eduAnimDone) doEducationAnimation(bottomScroll);
 
@@ -154,7 +155,7 @@ function doProjectsAnimation(bottomScroll) {
     }
 }
 
-$(window).on('resize', function () {
+$window.on('resize', function () {
     $('.skill-dist-line').height($('#skills-content').height() - $('.skill-extra').height() + $('.skill-progress').height());
 
     setTimeout(function () {
@@ -166,11 +167,11 @@ $(window).on('resize', function () {
     }, 800);
 
     if ($initials.height() != $initials.width()) $initials.width($initials.height());
-    isMobileDevice = $(window).width() < 700;
+    isMobileDevice = $window.width() < 700 || $window.height() < 600;
 });
 
-$(window).on('beforeunload', function () {
-    $(window).scrollTop(0);
+$window.on('beforeunload', function () {
+    $window.scrollTop(0);
 });
 
 (function () {
@@ -191,7 +192,7 @@ $(window).on('beforeunload', function () {
     $('.skill-dist-line').height($('#skills-content').height() - $('.skill-extra').height() + $('.skill-progress').height());
 
     setNav();
-    isMobileDevice = $(window).width() < 700;
+    isMobileDevice = $window.width() < 700 || $window.height() < 600;
 
     if ($initials.height() != $initials.width()) $initials.width($initials.height());
 
@@ -252,13 +253,14 @@ $(window).on('beforeunload', function () {
             }, 2000);
         }, 1000);
 
-        var bottomScroll = $(window).scrollTop() + $(window).height();
+        var bottomScroll = $window.scrollTop() + $window.height();
         doEducationAnimation(bottomScroll);
         doSkillAnimation(bottomScroll);
     });
 
-    if ($('#projects-text').offset().top + $('#projects-text').height() > $('#projects-tagline-text').offset().top + $('#projects-tagline-text').height())
-        $('#projects-tagline-text').hide();
+    var $projectsTagLine = $('#projects-tagline-text');
+    if ($('#projects-text').offset().top + $('#projects-text').height() > $projectsTagLine.offset().top + $projectsTagLine.height())
+        $projectsTagLine.attr('y', '55.6%');
 })();
 
 function setNav() {
@@ -323,8 +325,6 @@ function setProjects() {
     updateProjectInfo();
 
     $('.stick-left').click(function () {
-
-        console.log($('#projects-text').offset().top + $('#projects-text').height(), $('#projects-tagline-text').offset().top + $('#projects-tagline-text').height());
         switch (++carouselOffset) {
             case 0:
                 setTimeout(function () {

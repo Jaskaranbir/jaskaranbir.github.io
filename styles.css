@@ -86,7 +86,7 @@ body {
     top: 0.85vh;
     left: 50%;
     -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     width: 0;
     border-style: solid;
     border-color: white transparent;
@@ -106,7 +106,6 @@ body {
 
 #header-content {
     position: absolute;
-    display: table-cell;
     text-align: center;
     vertical-align: middle;
     color: white;
@@ -163,7 +162,7 @@ body {
     position: absolute;
     left: 50%;
     -webkit-transform: translate(-50%);
-            transform: translate(-50%);
+    transform: translate(-50%);
     font-size: 10vw;
     margin-top: 35vh;
 }
@@ -173,9 +172,9 @@ body {
     stroke-dasharray: 0;
     stroke-dashoffset: 100;
     -webkit-animation: text-outline-fadein-fast 5s linear;
-            animation: text-outline-fadein-fast 5s linear;
+    animation: text-outline-fadein-fast 5s linear;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes text-outline-fadein-fast {
@@ -224,20 +223,20 @@ body {
 
 #header-content > .header1 {
     -webkit-animation: fadein 1s linear;
-            animation: fadein 1s linear;
+    animation: fadein 1s linear;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
-    -webkit-animation-delay: 4.3s;
-            animation-delay: 4.3s;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
 }
 
 #header-desc {
     -webkit-animation: fadein-bottom 1s;
-            animation: fadein-bottom 1s;
+    animation: fadein-bottom 1s;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
     -webkit-animation-delay: 5.5s;
-            animation-delay: 5.5s;
+    animation-delay: 5.5s;
     line-height: 13.5vh;
 }
 
@@ -261,18 +260,18 @@ body {
     top: 70vh;
     left: 50%;
     -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     cursor: pointer;
     opacity: 0.3;
     font-size: 6vh;
     font-family: Roboto;
     width: 53px;
     -webkit-animation: fadeout 1s linear;
-            animation: fadeout 1s linear;
+    animation: fadeout 1s linear;
     -webkit-animation-delay: 8s;
-            animation-delay: 8s;
+    animation-delay: 8s;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 #wrapper {
@@ -288,7 +287,7 @@ body {
         margin-top: -25px;
         left: 50%;
         -webkit-transform: translateX(-50%);
-                transform: translateX(-50%);
+        transform: translateX(-50%);
         border-style: solid;
         border-color: #ED5446 transparent #ED5446;
         border-width: 0 40px 30px 40px;
@@ -311,7 +310,7 @@ body {
     padding: 5px;
     white-space: nowrap;
     -webkit-animation: marquee 30s linear infinite;
-            animation: marquee 30s linear infinite;
+    animation: marquee 30s linear infinite;
     color: rgba(255,255,255,0.5);
     font-family: roboto;
 }
@@ -319,24 +318,24 @@ body {
 @-webkit-keyframes marquee {
     from {
         -webkit-transform: translateX(100%);
-                transform: translateX(100%);
+        transform: translateX(100%);
     }
 
     to {
         -webkit-transform: translateX(-100%);
-                transform: translateX(-100%);
+        transform: translateX(-100%);
     }
 }
 
 @keyframes marquee {
     from {
         -webkit-transform: translateX(100%);
-                transform: translateX(100%);
+        transform: translateX(100%);
     }
 
     to {
         -webkit-transform: translateX(-100%);
-                transform: translateX(-100%);
+        transform: translateX(-100%);
     }
 }
 
@@ -346,7 +345,7 @@ body {
     left: 50%;
     color: white;
     -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     font-family: 'Berkshire Swash';
     color: rgba(255,255,255,0.6);
     z-index: 1;
@@ -403,7 +402,7 @@ body {
     position: relative;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .edu-grades-container {
@@ -432,12 +431,12 @@ body {
     top: calc(50% - 2px);
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .edu-course-canvas {
     -webkit-transform: rotate(-90deg);
-            transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 .edu-course-desc {
@@ -447,7 +446,7 @@ body {
     font-family: bitter;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
     text-align: left;
 }
 
@@ -500,7 +499,7 @@ body {
     position: absolute;
     left: 10%;
     -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     margin-top: -62px;
     border: none;
     border-left: 2px dotted rgba(0,0,0,0.2);
@@ -689,20 +688,20 @@ body {
 #cir1 {
     opacity: 0;
     -webkit-transform-origin: center;
-            transform-origin: center;
+    transform-origin: center;
     stroke-width: 5px;
     stroke: white;
     stroke-dasharray: 1500;
     stroke-dashoffset: 1500;
     -webkit-transform: scale(0.2);
-            transform: scale(0.2);
+    transform: scale(0.2);
 }
 
 .stroke-circle {
     -webkit-animation: dash 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
-            animation: dash 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+    animation: dash 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes dash {
@@ -710,7 +709,7 @@ body {
         opacity: 1;
         stroke-dashoffset: 0;
         -webkit-transform: rotate(-90deg) scale(0.8);
-                transform: rotate(-90deg) scale(0.8);
+        transform: rotate(-90deg) scale(0.8);
     }
 }
 
@@ -719,35 +718,35 @@ body {
         opacity: 1;
         stroke-dashoffset: 0;
         -webkit-transform: rotate(-90deg) scale(0.8);
-                transform: rotate(-90deg) scale(0.8);
+        transform: rotate(-90deg) scale(0.8);
     }
 }
 
 #cir2 {
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     -webkit-transform-origin: center;
-            transform-origin: center;
+    transform-origin: center;
     fill-opacity: 0.4;
 }
 
 .pop-circle {
     fill-opacity: 0;
     -webkit-transform: scale(0.2);
-            transform: scale(0.2);
+    transform: scale(0.2);
     -webkit-animation: pop-circle 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
-            animation: pop-circle 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+    animation: pop-circle 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
     -webkit-animation-delay: 0.3s;
-            animation-delay: 0.3s;
+    animation-delay: 0.3s;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes pop-circle {
     to {
         fill-opacity: 0.4;
         -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -755,7 +754,7 @@ body {
     to {
         fill-opacity: 0.4;
         -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -769,9 +768,9 @@ body {
 
 .text-outline {
     -webkit-animation: text-outline-fadein 5s cubic-bezier(0.69, 1.13, 0.01, 1.15);
-            animation: text-outline-fadein 5s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+    animation: text-outline-fadein 5s cubic-bezier(0.69, 1.13, 0.01, 1.15);
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes text-outline-fadein {
@@ -825,11 +824,11 @@ body {
 
 .semi-text-fadein {
     -webkit-animation: semi-fadein 1s linear;
-            animation: semi-fadein 1s linear;
+    animation: semi-fadein 1s linear;
     -webkit-animation-delay: 2s;
-            animation-delay: 2s;
+    animation-delay: 2s;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 #projects-scroller {
@@ -1029,24 +1028,24 @@ body {
 .fadein {
     opacity: 0;
     -webkit-animation: fadein 1s;
-            animation: fadein 1s;
+    animation: fadein 1s;
     -webkit-animation-delay: 0.5s;
-            animation-delay: 0.5s;
+    animation-delay: 0.5s;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 .fadein-fast {
     opacity: 0;
     -webkit-animation: fadein 500ms;
-            animation: fadein 500ms;
+    animation: fadein 500ms;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 .fadein-top {
     -webkit-animation: fadein-top 1s;
-            animation: fadein-top 1s;
+    animation: fadein-top 1s;
 }
 
 @-webkit-keyframes semi-fadein {
@@ -1113,18 +1112,18 @@ body {
 
 .fadeout {
     -webkit-animation: fadeout 1s linear;
-            animation: fadeout 1s linear;
+    animation: fadeout 1s linear;
     -webkit-animation-delay: 1s;
-            animation-delay: 1s;
+    animation-delay: 1s;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 .fadeout-fast {
     -webkit-animation: fadeout 500ms linear;
-            animation: fadeout 500ms linear;
+    animation: fadeout 500ms linear;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes fadeout {
@@ -1147,7 +1146,7 @@ body {
     .initials {
         left: 50%;
         -webkit-transform: translateX(-50%);
-                transform: translateX(-50%);
+        transform: translateX(-50%);
         border-bottom: 2px solid white;
     }
 
@@ -1158,13 +1157,13 @@ body {
     #nav-triangle {
         position: relative;
         display: block;
-        width:0;
+        width: 0;
         top: 0;
         margin-top: 0;
         margin: auto;
         border-width: 0 1.6vw 1.6vw 1.6vw;
         border-color: black transparent black;
-        border-style:solid;
+        border-style: solid;
     }
 
     .height0 {
@@ -1178,9 +1177,9 @@ body {
         top: 6.7vh;
         width: 100%;
         height: 500%;
-        left:0;
+        left: 0;
         -webkit-transition-duration: 250ms;
-                transition-duration: 250ms;
+        transition-duration: 250ms;
     }
 
     #nav ul {
@@ -1198,10 +1197,10 @@ body {
         transition: none;
     }
 
-    #nav li:hover{
-        border-bottom-color: white !important;
-    }
-    
+        #nav li:hover {
+            border-bottom-color: white !important;
+        }
+
     #header {
         height: 35vh;
     }
@@ -1296,7 +1295,7 @@ body {
             opacity: 0;
             stroke-dashoffset: 0;
             -webkit-transform: rotate(-90deg) scale(0.8);
-                    transform: rotate(-90deg) scale(0.8);
+            transform: rotate(-90deg) scale(0.8);
         }
     }
 
@@ -1309,7 +1308,7 @@ body {
             opacity: 0;
             stroke-dashoffset: 0;
             -webkit-transform: rotate(-90deg) scale(0.8);
-                    transform: rotate(-90deg) scale(0.8);
+            transform: rotate(-90deg) scale(0.8);
         }
     }
 
@@ -1332,7 +1331,7 @@ body {
 
     .carousel-scroll-button {
         background-color: rgba(0,0,0,0.3);
-        width: 12%; 
+        width: 12%;
         z-index: 1;
     }
 
@@ -1342,5 +1341,11 @@ body {
 
     #contact {
         width: 80%;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-height: 600px) {
+    .header1 {
+        font-size: 8vh;
     }
 }
