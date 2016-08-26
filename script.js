@@ -1,5 +1,7 @@
 'use strict';
 
+var isMobileDevice;
+
 var $navBar = $('#nav');
 var $navBarItem = $navBar.find('li');
 var $navTriangles = $('.nav-triangle');
@@ -43,7 +45,7 @@ $(window).scroll(function () {
         }
     });
 
-    var scrollOpacity = scrollPoint / 250;
+    var scrollOpacity = scrollPoint / 350;
     if (scrollOpacity < 1.1) $header.css({
         'opacity': 1 - scrollOpacity,
         'transform': 'scale(' + (1 - scrollPoint / 1100) + ')',
@@ -68,7 +70,15 @@ $(window).scroll(function () {
 
     var bottomScroll = scrollPoint + $(window).height();
 
-    if (!eduAnimDone) doEducationAnimation(bottomScroll);else if (!skillAnimDone) doSkillAnimation(bottomScroll);else if (!projectsAnimDone) doProjectsAnimation(bottomScroll);else if (!projectDescFixed && bottomScroll > projectDescOffset && bottomScroll < projectDescOffset + $projectDesc.height() / 2) {
+    if (!eduAnimDone) doEducationAnimation(bottomScroll);
+
+    else if (!skillAnimDone) doSkillAnimation(bottomScroll);
+
+    else if (!projectsAnimDone) doProjectsAnimation(bottomScroll);
+    
+    if (isMobileDevice) return;
+
+    else if (!projectDescFixed && bottomScroll > projectDescOffset && bottomScroll < projectDescOffset + $projectDesc.height() / 2) {
         $projectDesc.addClass('project-desc-fixed');
         $projects.addClass('bottom-padding');
         projectDescFixed = true;
@@ -156,6 +166,7 @@ $(window).on('resize', function () {
     }, 800);
 
     if ($initials.height() != $initials.width()) $initials.width($initials.height());
+    isMobileDevice = $(window).width() < 700;
 });
 
 $(window).on('beforeunload', function () {
@@ -165,13 +176,14 @@ $(window).on('beforeunload', function () {
 (function () {
     $('#greeting').hide().fadeIn(2000).delay(100).animate({
         'font-size': '3vh',
-        'margin-top': '6.8vh',
-        'height': '12vh'
+        'margin-top': '0',
+        'height': '10vh'
     }, 1000, function () {
         $('#greeting').css({
             'position': 'relative',
             'left': '0',
-            'transform': 'translateX(0)'
+            'top': '50%',
+            'transform': 'translate(0, -50%)'
         });
         $('#iam-text').append(', I am').hide().delay(300).fadeIn(1000);
     });
@@ -179,6 +191,7 @@ $(window).on('beforeunload', function () {
     $('.skill-dist-line').height($('#skills-content').height() - $('.skill-extra').height() + $('.skill-progress').height());
 
     setNav();
+    isMobileDevice = $(window).width() < 700;
 
     if ($initials.height() != $initials.width()) $initials.width($initials.height());
 
@@ -243,6 +256,9 @@ $(window).on('beforeunload', function () {
         doEducationAnimation(bottomScroll);
         doSkillAnimation(bottomScroll);
     });
+
+    if ($('#projects-text').offset().top + $('#projects-text').height() > $('#projects-tagline-text').offset().top + $('#projects-tagline-text').height())
+        $('#projects-tagline-text').hide();
 })();
 
 function setNav() {
@@ -307,11 +323,13 @@ function setProjects() {
     updateProjectInfo();
 
     $('.stick-left').click(function () {
+
+        console.log($('#projects-text').offset().top + $('#projects-text').height(), $('#projects-tagline-text').offset().top + $('#projects-tagline-text').height());
         switch (++carouselOffset) {
             case 0:
                 setTimeout(function () {
                     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
-                }, 800);break;
+                }, 800); break;
 
             case 1:
                 carouselOffset = -2;
@@ -338,7 +356,7 @@ function setProjects() {
             case -2:
                 setTimeout(function () {
                     $rightScrollButton.text('| <').css('letter-spacing', '-1vh');
-                }, 800);break;
+                }, 800); break;
 
             case -3:
                 carouselOffset = 0;
