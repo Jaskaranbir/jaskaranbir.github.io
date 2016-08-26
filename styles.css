@@ -153,13 +153,19 @@ body {
     text-shadow: 7px 7px rgba(0,0,0, 0.7);
 }
 
+#greeting-text-div {
+    margin-top: 6.8vh;
+    height: 12vh;
+    position: relative;
+}
+
 #greeting {
     position: absolute;
     left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    -webkit-transform: translate(-50%);
+            transform: translate(-50%);
     font-size: 10vw;
-    margin-top: 40vh;
+    margin-top: 35vh;
 }
 
 #hello-text {
@@ -718,25 +724,28 @@ body {
 }
 
 #cir2 {
-    -webkit-transform: scale(0.2);
-            transform: scale(0.2);
+    -webkit-transform: scale(0);
+            transform: scale(0);
     -webkit-transform-origin: center;
             transform-origin: center;
-    fill: transparent;
+    fill-opacity: 0.4;
 }
 
 .pop-circle {
+    fill-opacity: 0;
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
     -webkit-animation: pop-circle 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
             animation: pop-circle 1s cubic-bezier(0.69, 1.13, 0.01, 1.15);
-    -webkit-animation-delay: 0.7s;
-            animation-delay: 0.7s;
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
     -webkit-animation-fill-mode: forwards;
             animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes pop-circle {
     to {
-        fill: rgba(0,0,0,0.4);
+        fill-opacity: 0.4;
         -webkit-transform: scale(1);
                 transform: scale(1);
     }
@@ -744,7 +753,7 @@ body {
 
 @keyframes pop-circle {
     to {
-        fill: rgba(0,0,0,0.4);
+        fill-opacity: 0.4;
         -webkit-transform: scale(1);
                 transform: scale(1);
     }
@@ -1323,7 +1332,7 @@ body {
 
     .carousel-scroll-button {
         background-color: rgba(0,0,0,0.3);
-        width: 12%;
+        width: 12%; 
         z-index: 1;
     }
 

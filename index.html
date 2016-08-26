@@ -40,7 +40,9 @@
 
     <div id="header">
         <div id="header-content">
-            <div class="header2 no-line-height"><svg width="100%" height="17vw" id="greeting"><text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" id="hello-text"><tspan>Hello</tspan><tspan id="iam-text"></tspan></text></svg></div>
+            <div class="header2" id="greeting-text-div">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="17vw" id="greeting" fill="white"><text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" id="hello-text"><tspan>Hello</tspan><tspan id="iam-text"></tspan></text></svg>
+            </div>
 
             <div class="header1 initial-hide"><span class="translucent-white-color">{[</span> Jaskaran <span class="translucent-white-color">]}</span></div>
 
@@ -263,10 +265,10 @@
         </div>
 
         <div id="projects" class="section-div">
-            <svg fill="transparent" id="projects-text-svg">
-                <circle id="cir1" cx="50%" cy="50%" r="40%"></circle>
-                <circle id="cir2" cx="50%" cy="50%" r="40%"></circle>
-                <text x="50%" y="50%" text-anchor="middle" alignment-baseline="text-after-edge" id="projects-text">PROJECTS</text>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="transparent" id="projects-text-svg">
+                <circle id="cir1" cx="50%" cy="50%" r="40%" stroke="white" stroke-width="5" ></circle>
+                <circle id="cir2" cx="50%" cy="50%" r="40%" fill="black" fill-opacity="0.4"></circle>
+                <text x="50%" y="50%" text-anchor="middle" alignment-baseline="text-after-edge" id="projects-text" fill="white">PROJECTS</text>
                 <text x="50%" y="50%" text-anchor="middle" alignment-baseline="text-before-edge" id="projects-tagline-text">Some recent decents.</text>
             </svg><br />
 
