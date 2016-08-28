@@ -1154,7 +1154,7 @@ body {
         border: 2px solid white;
     }
 
-    #nav-triangle {
+    #menu-container-triangle {
         position: relative;
         display: block;
         width: 0;
