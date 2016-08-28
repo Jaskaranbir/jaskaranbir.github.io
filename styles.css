@@ -1192,7 +1192,8 @@ body {
 
     #nav li {
         display: block;
-        padding-bottom: 0.1vh;
+        padding-bottom: 0;
+        margin-top: 5px;
         -webkit-transition: none;
         transition: none;
     }
