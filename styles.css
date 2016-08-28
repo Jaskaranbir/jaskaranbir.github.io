@@ -1358,11 +1358,11 @@ body {
     #nav li {
         font-size: 1.5em;
         margin-top: 0.4em;
-        padding-bottom: 0.7em;
+        padding-bottom: 0.6em;
     }
 
     .nav-triangle {
-        top: 0;
+        display: none;
     }
 
     #wrapper {
