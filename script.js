@@ -3,6 +3,7 @@
 var isMobileDevice;
 
 var $window = $(window);
+var windowHeight = $window.height();
 var $navBar = $('#nav');
 var $navBarItem = $navBar.find('li');
 var $navTriangles = $('.nav-triangle');
@@ -13,162 +14,18 @@ var $sectionDivs = $('.section-div');
 var $projects = $('#projects');
 var $projectDesc = $('#project-desc');
 
-var changeNavColor = true;
-
 var canvases = [].slice.call(document.getElementsByClassName('edu-course-canvas'));
 var canvasesCount = canvases.length;
 var canvasScale = canvases[0].width;
 var canvasCenter = canvasScale / 2;
 var completeRadian = Math.PI * 2;
 var canvasIndexOffset = 0;
-
+var carouselOffset = 0;
+var projectDescOffset = 0;
 var eduAnimDone = false;
 var skillAnimDone = false;
 var projectsAnimDone = false;
-var carouselOffset = 0;
-var projectDescOffset = 0;
-var projectDescFixed = false;
-
-$window.scroll(function () {
-    var scrollPoint = $window.scrollTop();
-
-    $sectionDivs.each(function (i, e) {
-        if (scrollPoint + $window.height() / 2 >= $(e).offset().top - 100 && scrollPoint + $window.height() / 2 < $(e).offset().top + $(e).height()) {
-            $navBarItem.eq(i).css('border-bottom-color', 'white');
-            $navTriangles.eq(i).css('opacity', '1');
-
-            $navBarItem.eq(i - 1).css('border-bottom-color', 'transparent');
-            $navTriangles.eq(i - 1).css('opacity', '0');
-            $navBarItem.eq(i + 1).css('border-bottom-color', 'transparent');
-            $navTriangles.eq(i + 1).css('opacity', '0');
-
-            $('#menu-container').addClass('height0');
-        }
-    });
-
-    var scrollOpacity = scrollPoint / 350;
-    if (scrollOpacity < 1.1) $header.css({
-        'opacity': 1 - scrollOpacity,
-        'transform': 'scale(' + (1 - scrollPoint / 1100) + ')',
-        'margin-top': $header.css('margin-top') + scrollPoint / 8 + 'px'
-    });
-
-    if (scrollPoint > $wrapper.offset().top) {
-        $navBar.css({
-            'background-color': 'black'
-        });
-
-        $initials.addClass('initials-alt');
-
-        changeNavColor = true;
-    } else if (changeNavColor) {
-        $navBar.css('background-color', 'transparent');
-
-        $initials.removeClass('initials-alt');
-
-        changeNavColor = false;
-    }
-
-    var bottomScroll = scrollPoint + $window.height();
-
-    if (!eduAnimDone) doEducationAnimation(bottomScroll);
-
-    else if (!skillAnimDone) doSkillAnimation(bottomScroll);
-
-    else if (!projectsAnimDone) doProjectsAnimation(bottomScroll);
-    
-    if (isMobileDevice) return;
-
-    else if (!projectDescFixed && bottomScroll > projectDescOffset && bottomScroll < projectDescOffset + $projectDesc.height() / 2) {
-        $projectDesc.addClass('project-desc-fixed');
-        $projects.addClass('bottom-padding');
-        projectDescFixed = true;
-    } else if (projectDescFixed && bottomScroll > projectDescOffset + $projectDesc.height() / 1.3 || bottomScroll < projectDescOffset - $projectDesc.height() / 2) {
-        $projectDesc.removeClass('project-desc-fixed');
-        $projects.removeClass('bottom-padding');
-        projectDescFixed = false;
-    }
-});
-
-function doEducationAnimation(bottomScroll) {
-    var $eduCourseGrade = $('.edu-course-grade');
-
-    var _loop = function _loop() {
-
-        var context = canvases[0].getContext('2d');
-        var end = $eduCourseGrade.eq(canvasIndexOffset).data('number') + 0.01;
-        var cur = 0;
-        var accel = 0.001;
-        context.lineWidth = 8;
-
-        (function animate(curr, stop) {
-            context.clearRect(0, 0, canvasScale, canvasScale);
-
-            context.strokeStyle = 'rgba(0,0,0,0.15)';
-            context.beginPath();
-            context.arc(canvasCenter, canvasCenter, 25, 0, curr * completeRadian, true);
-            context.stroke();
-            context.closePath();
-
-            context.strokeStyle = '#ED5446';
-            context.beginPath();
-            context.arc(canvasCenter, canvasCenter, 25, 0, curr * completeRadian, false);
-            context.stroke();
-            context.closePath();
-
-            if (stop) return;
-
-            requestAnimationFrame(function () {
-                return cur <= end ? animate(cur) : animate(end, true);
-            });
-
-            cur += accel;
-            accel += 0.002;
-        })();
-
-        canvasIndexOffset++;
-        canvases.splice(0, 1);
-
-        if (canvasIndexOffset === canvasesCount) eduAnimDone = true;
-    };
-
-    while (canvasIndexOffset < canvasesCount && bottomScroll > $(canvases[0]).offset().top) {
-        _loop();
-    }
-}
-
-function doSkillAnimation(bottomScroll) {
-    $('.skill-progressbar').each(function (i, e) {
-        if (bottomScroll <= $(e).offset().top) return;
-        $(e).addClass('width' + $(e).data('progress'));
-        if (i === 10) skillAnimDone = true;
-    });
-}
-
-function doProjectsAnimation(bottomScroll) {
-    if (bottomScroll > $('#projects-text-svg').offset().top + $('#projects-text-svg').outerWidth() / 1.5) {
-        $('#cir1').addClass('stroke-circle');
-        $('#cir2').addClass('pop-circle');
-        $('#projects-text').addClass('text-outline');
-        $('#projects-tagline-text').addClass('semi-text-fadein');
-        projectsAnimDone = true;
-    }
-}
-
-$window.on('resize', function () {
-    $('.skill-dist-line').height($('#skills-content').height() - $('.skill-extra').height() + $('.skill-progress').height());
-
-    setTimeout(function () {
-        $('#projects-scroller').height($('#projects-carousel img').eq(-carouselOffset).outerHeight());
-
-        setTimeout(function () {
-            projectDescOffset = $projectDesc.offset().top + $projectDesc.height() / 2;
-        }, 600);
-    }, 800);
-
-    if ($initials.height() != $initials.width()) $initials.width($initials.height());
-    isMobileDevice = $window.width() < 700 || $window.height() < 600;
-});
+var scrollAnimsDone = false;
 
 $window.on('beforeunload', function () {
     $window.scrollTop(0);
@@ -261,7 +118,169 @@ $window.on('beforeunload', function () {
     var $projectsTagLine = $('#projects-tagline-text');
     if ($('#projects-text').offset().top + $('#projects-text').height() > $projectsTagLine.offset().top + $projectsTagLine.height())
         $projectsTagLine.attr('y', '55.6%');
+
+    setWindowScrollEvents();
+    setWindowResizeEvents();
 })();
+
+function setWindowScrollEvents() {
+    var changeNavColor = true;
+    var projectDescFixed = false;
+    var scrollPoint = 0;
+    var bottomScroll = 0;
+    var hasScrolled = false;
+
+    $window.scroll(function () {
+        scrollPoint = $window.scrollTop();
+
+        var scrollOpacity = scrollPoint / 350;
+        if (scrollOpacity < 1.1) $header.css({
+            'opacity': 1 - scrollOpacity,
+            'transform': 'scale(' + (1 - scrollPoint / 1100) + ')',
+            'margin-top': $header.css('margin-top') + scrollPoint / 8 + 'px'
+        });
+
+        hasScrolled = true;
+
+        bottomScroll = scrollPoint + windowHeight;
+
+        if (isMobileDevice) return;
+
+        if (!projectDescFixed && bottomScroll > projectDescOffset && bottomScroll < projectDescOffset + $projectDesc.height() / 2) {
+            $projectDesc.addClass('project-desc-fixed');
+            $projects.addClass('bottom-padding');
+            projectDescFixed = true;
+        }
+        else if (projectDescFixed && bottomScroll > projectDescOffset + $projectDesc.height() / 1.3 || bottomScroll < projectDescOffset - $projectDesc.height() / 2) {
+            $projectDesc.removeClass('project-desc-fixed');
+            $projects.removeClass('bottom-padding');
+            projectDescFixed = false;
+        }
+    });
+
+    setInterval(function () {
+        if (!hasScrolled) return;
+        hasScrolled = false;
+
+        $sectionDivs.each(function (i, e) {
+            if (scrollPoint + $window.height() / 2 >= $(e).offset().top - 100 && scrollPoint + $window.height() / 2 < $(e).offset().top + $(e).height()) {
+                $navBarItem.eq(i).css('border-bottom-color', 'white');
+                $navBarItem.eq(i - 1).css('border-bottom-color', 'transparent');
+                $navBarItem.eq(i + 1).css('border-bottom-color', 'transparent');
+
+                if (!isMobileDevice) {
+                    $navTriangles.eq(i).css('opacity', '1');
+                    $navTriangles.eq(i - 1).css('opacity', '0');
+                    $navTriangles.eq(i + 1).css('opacity', '0');
+                }
+
+                $('#menu-container').addClass('height0');
+            }
+        });
+
+        if (scrollPoint > $wrapper.offset().top) {
+            $navBar.css({
+                'background-color': 'black'
+            });
+
+            $initials.addClass('initials-alt');
+
+            changeNavColor = true;
+        }
+        else if (changeNavColor) {
+            $navBar.css('background-color', 'transparent');
+            $initials.removeClass('initials-alt');
+            changeNavColor = false;
+        }
+
+        if (scrollAnimsDone) return;
+
+        if (!eduAnimDone) doEducationAnimation(bottomScroll);
+        else if (!skillAnimDone) doSkillAnimation(bottomScroll);
+        else if (!projectsAnimDone) doProjectsAnimation(bottomScroll);
+    }, 250);
+}
+
+function doEducationAnimation(bottomScroll) {
+    var $eduCourseGrade = $('.edu-course-grade');
+
+    while (canvasIndexOffset < canvasesCount && bottomScroll > $(canvases[0]).offset().top)
+     (function() {
+        var context = canvases[0].getContext('2d');
+        var end = $eduCourseGrade.eq(canvasIndexOffset).data('number') + 0.01;
+        var cur = 0;
+        var accel = 0.001;
+        context.lineWidth = 8;
+
+        (function animate(curr, stop) {
+            context.clearRect(0, 0, canvasScale, canvasScale);
+
+            context.strokeStyle = 'rgba(0,0,0,0.15)';
+            context.beginPath();
+            context.arc(canvasCenter, canvasCenter, 25, 0, curr * completeRadian, true);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#ED5446';
+            context.beginPath();
+            context.arc(canvasCenter, canvasCenter, 25, 0, curr * completeRadian, false);
+            context.stroke();
+            context.closePath();
+
+            if (stop) return;
+
+            requestAnimationFrame(function () {
+                return cur <= end ? animate(cur) : animate(end, true);
+            });
+
+            cur += accel;
+            accel += 0.002;
+        })();
+
+        canvasIndexOffset++;
+        canvases.splice(0, 1);
+
+        if (canvasIndexOffset === canvasesCount) eduAnimDone = true;
+    })();
+}
+
+function doSkillAnimation(bottomScroll) {
+    $('.skill-progressbar').each(function (i, e) {
+        if (bottomScroll <= $(e).offset().top) return;
+        $(e).addClass('width' + $(e).data('progress'));
+        if (i === 10) skillAnimDone = true;
+    });
+}
+
+function doProjectsAnimation(bottomScroll) {
+    if (bottomScroll > $('#projects-text-svg').offset().top + $('#projects-text-svg').outerWidth() / 1.5) {
+        $('#cir1').addClass('stroke-circle');
+        $('#cir2').addClass('pop-circle');
+        $('#projects-text').addClass('text-outline');
+        $('#projects-tagline-text').addClass('semi-text-fadein');
+        projectsAnimDone = true;
+        scrollAnimsDone = true;
+    }
+}
+
+function setWindowResizeEvents() {
+    $window.on('resize', function () {
+        $('.skill-dist-line').height($('#skills-content').height() - $('.skill-extra').height() + $('.skill-progress').height());
+
+        setTimeout(function () {
+            $('#projects-scroller').height($('#projects-carousel img').eq(-carouselOffset).outerHeight());
+
+            setTimeout(function () {
+                projectDescOffset = $projectDesc.offset().top + $projectDesc.height() / 2;
+            }, 600);
+        }, 800);
+
+        if ($initials.height() != $initials.width()) $initials.width($initials.height());
+        isMobileDevice = $window.width() < 700 || $window.height() < 600;
+
+        windowHeight = $window.height();
+    });
+}
 
 function setNav() {
     var navbarHeight = $navBar.height();
