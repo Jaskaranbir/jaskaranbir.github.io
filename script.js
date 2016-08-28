@@ -28,7 +28,6 @@ var projectsAnimDone = false;
 var carouselOffset = 0;
 var projectDescOffset = 0;
 var projectDescFixed = false;
-var scrollAnimsDone = false;
 
 $window.scroll(function () {
     var scrollPoint = $window.scrollTop();
@@ -69,8 +68,6 @@ $window.scroll(function () {
 
         changeNavColor = false;
     }
-
-    if (scrollAnimsDone) return;
 
     var bottomScroll = scrollPoint + $window.height();
 
@@ -155,7 +152,6 @@ function doProjectsAnimation(bottomScroll) {
         $('#projects-text').addClass('text-outline');
         $('#projects-tagline-text').addClass('semi-text-fadein');
         projectsAnimDone = true;
-        scrollAnimsDone = true;
     }
 }
 
