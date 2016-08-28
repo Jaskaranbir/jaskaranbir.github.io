@@ -175,6 +175,7 @@ $window.on('beforeunload', function () {
 });
 
 (function () {
+    alert($window.height());
     $('#greeting').hide().fadeIn(2000).delay(100).animate({
         'font-size': '3vh',
         'margin-top': '0',
