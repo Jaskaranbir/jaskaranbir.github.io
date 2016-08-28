@@ -1202,6 +1202,10 @@ body {
             border-bottom-color: white !important;
         }
 
+        .nav-triangle {
+            top: 0.65vh;
+        }
+
     #header {
         height: 35vh;
     }
