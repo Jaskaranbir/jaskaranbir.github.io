@@ -1192,7 +1192,7 @@ body {
 
     #nav li {
         display: block;
-        padding-bottom: 0;
+        padding-bottom: 0.2vh;
         margin-top: 1.2vh;
         -webkit-transition: none;
         transition: none;
@@ -1202,9 +1202,9 @@ body {
             border-bottom-color: white !important;
         }
 
-        .nav-triangle {
-            top: 0.65vh;
-        }
+    .nav-triangle {
+        display: none;
+    }
 
     #header {
         height: 35vh;
