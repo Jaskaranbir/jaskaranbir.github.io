@@ -4,8 +4,10 @@ var isMobileDevice;
 
 var $window = $(window);
 var windowHeight = $window.height();
+
 var $navBar = $('#nav');
 var $navBarItem = $navBar.find('li');
+var $menuContainer = $('#menu-container');
 var $navTriangles = $('.nav-triangle');
 var $initials = $('.initials');
 var $header = $('#header-content');
@@ -110,7 +112,7 @@ $window.on('beforeunload', function () {
             }, 2000);
         }, 1000);
 
-        var bottomScroll = $window.scrollTop() + $window.height();
+        var bottomScroll = $window.scrollTop() + windowHeight;
         doEducationAnimation(bottomScroll);
         doSkillAnimation(bottomScroll);
     });
@@ -124,11 +126,10 @@ $window.on('beforeunload', function () {
 })();
 
 function setWindowScrollEvents() {
-    var changeNavColor = true;
     var projectDescFixed = false;
+    var hasScrolled = false;
     var scrollPoint = 0;
     var bottomScroll = 0;
-    var hasScrolled = false;
 
     $window.scroll(function () {
         scrollPoint = $window.scrollTop();
@@ -158,46 +159,56 @@ function setWindowScrollEvents() {
         }
     });
 
+    var changeNavColor = false;
+    var lastScrollPoint = 0;
+
     setInterval(function () {
         if (!hasScrolled) return;
         hasScrolled = false;
 
-        $sectionDivs.each(function (i, e) {
-            if (scrollPoint + $window.height() / 2 >= $(e).offset().top - 100 && scrollPoint + $window.height() / 2 < $(e).offset().top + $(e).height()) {
-                $navBarItem.eq(i).css('border-bottom-color', 'white');
-                $navBarItem.eq(i - 1).css('border-bottom-color', 'transparent');
-                $navBarItem.eq(i + 1).css('border-bottom-color', 'transparent');
-
-                if (!isMobileDevice) {
-                    $navTriangles.eq(i).css('opacity', '1');
-                    $navTriangles.eq(i - 1).css('opacity', '0');
-                    $navTriangles.eq(i + 1).css('opacity', '0');
-                }
-
-                $('#menu-container').addClass('height0');
-            }
-        });
-
-        if (scrollPoint > $wrapper.offset().top) {
-            $navBar.css({
-                'background-color': 'black'
-            });
-
-            $initials.addClass('initials-alt');
-
+        if (scrollPoint < $wrapper.offset().top) {
+            $navBar.removeClass('nav-alt-color');
+            $initials.removeClass('initials-alt');
             changeNavColor = true;
         }
         else if (changeNavColor) {
-            $navBar.css('background-color', 'transparent');
-            $initials.removeClass('initials-alt');
+            $navBar.addClass('nav-alt-color');
+            $initials.addClass('initials-alt');
             changeNavColor = false;
         }
 
-        if (scrollAnimsDone) return;
+        if (!scrollAnimsDone) {
+            if (!eduAnimDone) doEducationAnimation(bottomScroll);
+            else if (!skillAnimDone) doSkillAnimation(bottomScroll);
+            else if (!projectsAnimDone) doProjectsAnimation(bottomScroll);
+        }
 
-        if (!eduAnimDone) doEducationAnimation(bottomScroll);
-        else if (!skillAnimDone) doSkillAnimation(bottomScroll);
-        else if (!projectsAnimDone) doProjectsAnimation(bottomScroll);
+        var scrollDelta = scrollPoint - lastScrollPoint;
+
+        if (scrollDelta > 20)
+            $navBar.css('top', '-10vh');
+        else if (scrollDelta < -0)
+            $navBar.css('top', '0');
+
+        lastScrollPoint = scrollPoint;
+
+        $sectionDivs.each(function (i, e) {
+            var $e = $(e);
+            var topOffset = $e.offset().top;
+            if (scrollPoint + windowHeight / 2 >= topOffset - 100 && scrollPoint + windowHeight / 2 < topOffset + $e.height()) {
+                $navBarItem.eq(i).css('border-bottom-color', 'white');
+
+                if (!isMobileDevice)
+                    $navTriangles.eq(i).css('opacity', '1');
+            }
+            else {
+                $navBarItem.eq(i).css('border-bottom-color', 'transparent');
+                if (!isMobileDevice)
+                    $navTriangles.eq(i).css('opacity', '0');
+            }
+
+            $menuContainer.addClass('height0');
+        });
     }, 250);
 }
 
@@ -205,43 +216,43 @@ function doEducationAnimation(bottomScroll) {
     var $eduCourseGrade = $('.edu-course-grade');
 
     while (canvasIndexOffset < canvasesCount && bottomScroll > $(canvases[0]).offset().top)
-     (function() {
-        var context = canvases[0].getContext('2d');
-        var end = $eduCourseGrade.eq(canvasIndexOffset).data('number') + 0.01;
-        var cur = 0;
-        var accel = 0.001;
-        context.lineWidth = 8;
+        (function () {
+            var context = canvases[0].getContext('2d');
+            var end = $eduCourseGrade.eq(canvasIndexOffset).data('number') + 0.01;
+            var cur = 0;
+            var accel = 0.001;
+            context.lineWidth = 8;
 
-        (function animate(curr, stop) {
-            context.clearRect(0, 0, canvasScale, canvasScale);
+            (function animate(curr, stop) {
+                context.clearRect(0, 0, canvasScale, canvasScale);
 
-            context.strokeStyle = 'rgba(0,0,0,0.15)';
-            context.beginPath();
-            context.arc(canvasCenter, canvasCenter, 25, 0, curr * completeRadian, true);
-            context.stroke();
-            context.closePath();
+                context.strokeStyle = 'rgba(0,0,0,0.15)';
+                context.beginPath();
+                context.arc(canvasCenter, canvasCenter, 25, 0, curr * completeRadian, true);
+                context.stroke();
+                context.closePath();
 
-            context.strokeStyle = '#ED5446';
-            context.beginPath();
-            context.arc(canvasCenter, canvasCenter, 25, 0, curr * completeRadian, false);
-            context.stroke();
-            context.closePath();
+                context.strokeStyle = '#ED5446';
+                context.beginPath();
+                context.arc(canvasCenter, canvasCenter, 25, 0, curr * completeRadian, false);
+                context.stroke();
+                context.closePath();
 
-            if (stop) return;
+                if (stop) return;
 
-            requestAnimationFrame(function () {
-                return cur <= end ? animate(cur) : animate(end, true);
-            });
+                requestAnimationFrame(function () {
+                    return cur <= end ? animate(cur) : animate(end, true);
+                });
 
-            cur += accel;
-            accel += 0.002;
+                cur += accel;
+                accel += 0.002;
+            })();
+
+            canvasIndexOffset++;
+            canvases.splice(0, 1);
+
+            if (canvasIndexOffset === canvasesCount) eduAnimDone = true;
         })();
-
-        canvasIndexOffset++;
-        canvases.splice(0, 1);
-
-        if (canvasIndexOffset === canvasesCount) eduAnimDone = true;
-    })();
 }
 
 function doSkillAnimation(bottomScroll) {
@@ -284,7 +295,7 @@ function setWindowResizeEvents() {
 
 function setNav() {
     var navbarHeight = $navBar.height();
-    $('#nav').find('li').each(function (i, e) {
+    $navBarItem.each(function (i, e) {
         $(e).on('click', function () {
             $('html, body').animate({
                 scrollTop: $('#' + $(e).data('anchor')).offset().top - navbarHeight
@@ -293,7 +304,7 @@ function setNav() {
     });
 
     $initials.on('click', function () {
-        $('#menu-container').toggleClass('height0');
+        $menuContainer.toggleClass('height0');
     });
 
     setEducation();

@@ -15,6 +15,11 @@ body {
     height: 6vh;
     z-index: 2;
     overflow: hidden;
+    transition: top 150ms;
+}
+
+.nav-alt-color {
+    background-color: black !important;
 }
 
 .transition {
@@ -24,10 +29,6 @@ body {
 
 .initial-hide {
     opacity: 0;
-}
-
-.no-line-height {
-    line-height: 0;
 }
 
 .initials {
@@ -226,8 +227,8 @@ body {
     animation: fadein 1s linear;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
-    -webkit-animation-delay: 5s;
-    animation-delay: 5s;
+    -webkit-animation-delay: 4.3s;
+    animation-delay: 4.3s;
 }
 
 #header-desc {
@@ -1351,8 +1352,9 @@ body {
 
 @media screen and (max-height: 500px) {
     .initials {
-        top: -1.5em;
-        font-size: 1.5em;
+        top: -2em;
+        font-size: 1.1em;
+        padding: 0.2em;
     }
 
     #menu-container {
