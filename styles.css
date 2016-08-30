@@ -15,6 +15,7 @@ body {
     height: 6vh;
     z-index: 2;
     overflow: hidden;
+    -webkit-transition: top 150ms;
     transition: top 150ms;
 }
 
