@@ -43,7 +43,7 @@ $window.on('beforeunload', function () {
     setNav();
     isMobileDevice = $window.width() < 700 || $window.height() < 600;
 
-    if ($initials.height() != $initials.width()) $initials.width($initials.height());
+    if ($initials.height() !== $initials.width()) $initials.width($initials.height());
 
     setTimeout(function () {
         $('#design-text').css('border-right', '2px solid white');
@@ -62,11 +62,13 @@ $window.on('beforeunload', function () {
         });
     }, 7000);
 
+    var $codeText = $('#code-text');
+
     setTimeout(function () {
         "Code".split('').forEach(function (y, i) {
             setTimeout(function () {
-                $('#code-text').append('<span style = "background-color: white; color: black">' + y + '</span>');
-                if (i > 0) $('#code-text').children('span').eq(i - 1).css({
+                $codeText.append('<span style = "background-color: white; color: black">' + y + '</span>');
+                if (i > 0) $codeText.children('span').eq(i - 1).css({
                     'background-color': 'transparent',
                     'color': 'white'
                 });
@@ -74,7 +76,7 @@ $window.on('beforeunload', function () {
         });
 
         setTimeout(function () {
-            $('#code-text').children('span').eq(3).css({
+            $codeText.children('span').eq(3).css({
                 'background-color': 'transparent',
                 'color': 'white'
             });
@@ -85,14 +87,11 @@ $window.on('beforeunload', function () {
         $('#header-space').dequeue();
     });
 
-    setWindowScrollEvents();
-    setWindowResizeEvents();
-
     $('#header-space').delay(8500).animate({
         'height': '50vh'
     }, 1400, function () {
-        $('#nav').find('ul').css('margin-top', '0');
-        $('.initials').css('top', '0');
+        $navBar.find('ul').css('margin-top', '0');
+        $initials.css('top', '0');
         $('body').css('overflow', 'auto');
         $('#skip-button').remove();
         projectDescOffset = $projectDesc.offset().top + $projectDesc.height() / 2;
@@ -108,9 +107,13 @@ $window.on('beforeunload', function () {
         $window.scrollTop(1);
     });
 
+    var $projectsText = $('#projects-text');
     var $projectsTagLine = $('#projects-tagline-text');
-    if ($('#projects-text').offset().top + $('#projects-text').height() > $projectsTagLine.offset().top + $projectsTagLine.height())
+    if ($projectsText.offset().top + $projectsText.height() > $projectsTagLine.offset().top + $projectsTagLine.height())
         $projectsTagLine.attr('y', '55.6%');
+
+    setWindowScrollEvents();
+    setWindowResizeEvents();
 })();
 
 function setWindowScrollEvents() {
@@ -208,8 +211,6 @@ function setWindowScrollEvents() {
             $menuContainer.addClass('height0');
         });
     }, 250);
-
-
 
     function doEducationAnimation(bottomScroll) {
         var $eduCourseGrade = $('.edu-course-grade');

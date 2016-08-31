@@ -458,6 +458,23 @@ body {
     background-color: rgba(0,0,0,0.6);
 }
 
+.edu-gpa-divider {
+    margin-top: 37px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, rgba(93, 89, 86, 0.6), transparent);
+}
+
+#gpa {
+    margin: -17px auto auto auto;
+    width: 102px;
+    background-color: white;
+    font-family: bitter;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ED5446;
+}
+
 .section-divider {
     margin-top: 55px;
     border-bottom: none;
@@ -945,8 +962,7 @@ body {
 #contact {
     margin: 0 auto 50px auto;
     text-align: center;
-    padding-bottom: 24px;
-    width: 45%;
+    width: 100%;
 }
 
 #contact-text {
@@ -974,6 +990,11 @@ body {
     top: 0px;
     opacity: 1;
     cursor: initial;
+}
+
+#contact-form-container {
+    margin: auto;
+    width: 45%;
 }
 
 .contact-form {
@@ -1005,8 +1026,8 @@ body {
     border: none;
     border-radius: 5px;
     font-size: 18px;
-    -webkit-transition: all 700ms linear;
-    transition: all 700ms linear;
+    -webkit-transition: all 400ms linear;
+    transition: all 400ms linear;
 }
 
     #contact button:hover {
@@ -1014,6 +1035,23 @@ body {
         outline: none;
         box-shadow: 0 0 0 2pt #5D5956;
     }
+
+#profiles-text {
+    margin-top: 50px;
+    margin-bottom: 25px;
+    background-color: #E1E1E1;
+    font-family: Roboto;
+    font-size: 30px;
+    color: rgba(37, 38, 39, 0.86);
+}
+
+.profile-img-container {
+    margin-top:20px;
+}
+
+.profile-img {
+    width: 15%;
+}
 
 /*----------------------------------------------------------------------------*/
 
@@ -1346,7 +1384,7 @@ body {
         z-index: 2;
     }
 
-    #contact {
+    #contact-form-container {
         width: 80%;
     }
 }
