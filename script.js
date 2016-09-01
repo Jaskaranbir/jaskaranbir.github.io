@@ -176,8 +176,8 @@ function setWindowScrollEvents() {
         var scrollDelta = scrollPoint - lastScrollPoint;
 
         if (scrollDelta > 20) {
-            $navBar.css('top', '-10vh');
-            $navBarList.css('margin-top', '-10vh');
+            $navBar.css('top', '-80px');
+            $navBarList.css('margin-top', '-80px');
         }
         else if (scrollDelta < -0) {
             $navBar.css('top', '0');
