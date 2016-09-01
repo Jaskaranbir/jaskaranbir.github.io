@@ -1387,6 +1387,10 @@ body {
     #contact-form-container {
         width: 80%;
     }
+
+    .profile-img {
+        width: 48%;
+    }
 }
 
 @media screen and (max-height: 500px) {
