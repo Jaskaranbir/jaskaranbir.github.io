@@ -1401,7 +1401,7 @@ body {
     }
 
     .initials {
-        top: -2em;
+        top: -4em;
         font-size: 1.1em;
         padding: 0.2em;
     }
@@ -1412,7 +1412,7 @@ body {
     }
 
     #nav {
-        height: 50px;
+        height: 35px;
     }
 
     #nav ul {
