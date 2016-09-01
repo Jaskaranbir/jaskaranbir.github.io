@@ -1401,18 +1401,18 @@ body {
     }
 
     .initials {
-        top: -2em;
+        top: -4em;
         font-size: 1.1em;
         padding: 0.2em;
     }
 
     #menu-container {
-        top: 3.3em;
+        top: 2.3em;
         height: 706%;
     }
 
     #nav {
-        height: 50px;
+        height: 35px;
     }
 
     #nav ul {
