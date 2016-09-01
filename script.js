@@ -212,10 +212,11 @@ function setWindowScrollEvents() {
         });
     }, 250);
 
+    var $eduCourseGrade = $('.edu-course-grade');
+    var canvasIndexOffset = 0;
+    var canvasesCount = canvases.length;
+
     function doEducationAnimation(bottomScroll) {
-        var $eduCourseGrade = $('.edu-course-grade');
-        var canvasesCount = canvases.length;
-        var canvasIndexOffset = 0;
 
         while (canvasIndexOffset < canvasesCount && bottomScroll > $(canvases[0]).offset().top)
             (function () {
