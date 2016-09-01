@@ -33,6 +33,7 @@ $window.on('beforeunload', function () {
             'position': 'relative',
             'left': '0',
             'top': '50%',
+            '-webkit-transform': 'translate(0; -50%)',
             'transform': 'translate(0, -50%)'
         });
         $('#iam-text').append(', I am').hide().delay(300).fadeIn(1000);
@@ -105,6 +106,7 @@ $window.on('beforeunload', function () {
         }, 1000);
 
         $window.scrollTop(1);
+        $('#projects-scroller').height($('#projects-carousel').find('img').eq(0).outerHeight());
     });
 
     var $projectsText = $('#projects-text');
@@ -130,6 +132,7 @@ function setWindowScrollEvents() {
         var scrollOpacity = scrollPoint / 350;
         if (scrollOpacity < 1.1) $header.css({
             'opacity': 1 - scrollOpacity,
+            '-webkit-transform': 'scale(' + (1 - scrollPoint / 1100) + ')',
             'transform': 'scale(' + (1 - scrollPoint / 1100) + ')',
             'margin-top': $header.css('margin-top') + scrollPoint / 8 + 'px'
         });
@@ -336,7 +339,6 @@ function setProjects() {
     var $carouselContainer = $('#projects-carousel-container');
     var $carouselContChild = $carouselContainer.children();
 
-    $('#projects-scroller').height($('#projects-carousel').find('img').eq(0).outerHeight());
     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
 
     var projectInfo = [[['Super Mario'], ['Java'], ['JavaFX'], ['A simple clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using pure JavaFX.']], [['MySQL-GUI'], ['Java'], ['Spring Framework | JDBC | Maven | Swing'], ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']], [['Falling Robots'], ['Java'], ['Becker Robots'], ['A simple java game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']]];
@@ -380,7 +382,10 @@ function setProjects() {
 
         $rightScrollButton.text('>>').css('letter-spacing', '-1.5vh');
 
-        $carouselContainer.css('transform', 'translateX(' + 33.33 * carouselOffset + '%)');
+        $carouselContainer.css({
+            '-webkit-transform': 'translateX(' + 33.33 * carouselOffset + '%)',
+            'transform': 'translateX(' + 33.33 * carouselOffset + '%)'
+        });
         $carouselContChild.eq(carouselOffset === -2 ? 0 : -carouselOffset + 1).children().eq(0).addClass('carousel-img-width-alt');
         $carouselContChild.eq(-carouselOffset).children().eq(0).removeClass('carousel-img-width-alt').addClass('carousel-img-width');
     });
@@ -407,7 +412,10 @@ function setProjects() {
 
         $leftScrollButton.text('<<').css('letter-spacing', '-1.5vh');
 
-        $carouselContainer.css('transform', 'translateX(' + 33.33 * carouselOffset + '%)');
+        $carouselContainer.css({
+            '-webkit-transform': 'translateX(' + 33.33 * carouselOffset + '%)',
+            'transform': 'translateX(' + 33.33 * carouselOffset + '%)'
+        });
         $carouselContChild.eq(-carouselOffset - 1).children().eq(0).addClass('carousel-img-width-alt');
         $carouselContChild.eq(-carouselOffset).children().eq(0).removeClass('carousel-img-width-alt').addClass('carousel-img-width');
     });
