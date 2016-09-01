@@ -6,6 +6,7 @@ var $window = $(window);
 var windowHeight = $window.height();
 
 var $navBar = $('#nav');
+var $navBarList = $navBar.find('ul');
 var $navBarItem = $navBar.find('li');
 var $menuContainer = $('#menu-container');
 var $navTriangles = $('.nav-triangle');
@@ -91,7 +92,7 @@ $window.on('beforeunload', function () {
     $('#header-space').delay(8500).animate({
         'height': '50vh'
     }, 1400, function () {
-        $navBar.find('ul').css('margin-top', '0');
+        $navBarList.css('margin-top', '0');
         $initials.css('top', '0');
         $('body').css('overflow', 'auto');
         $('#skip-button').remove();
@@ -174,10 +175,14 @@ function setWindowScrollEvents() {
 
         var scrollDelta = scrollPoint - lastScrollPoint;
 
-        if (scrollDelta > 20)
+        if (scrollDelta > 20) {
             $navBar.css('top', '-10vh');
-        else if (scrollDelta < -0)
+            $navBarList.css('margin-top', '-10vh');
+        }
+        else if (scrollDelta < -0) {
             $navBar.css('top', '0');
+            $navBarList.css('margin-top', '0');
+        }
 
         lastScrollPoint = scrollPoint;
 
