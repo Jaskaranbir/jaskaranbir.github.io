@@ -336,7 +336,7 @@ function setProjects() {
     var $carouselContainer = $('#projects-carousel-container');
     var $carouselContChild = $carouselContainer.children();
 
-    $('#projects-scroller').height($('#projects-carousel').find('img').eq(-carouselOffset).outerHeight());
+    $('#projects-scroller').height($('#projects-carousel').find('img').eq(0).outerHeight());
     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
 
     var projectInfo = [[['Super Mario'], ['Java'], ['JavaFX'], ['A simple clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using pure JavaFX.']], [['MySQL-GUI'], ['Java'], ['Spring Framework | JDBC | Maven | Swing'], ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']], [['Falling Robots'], ['Java'], ['Becker Robots'], ['A simple java game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']]];
