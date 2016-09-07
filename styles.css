@@ -536,7 +536,7 @@ body {
     }
 
 .skill-dist-line0 {
-  left: 24%;
+    left: 24%;
     border-left: none;
 }
 
@@ -1193,6 +1193,7 @@ body {
 
     .initials {
         left: 50%;
+        cursor: pointer;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
         border-bottom: 2px solid white;
@@ -1320,15 +1321,43 @@ body {
         font-size: 14px;
     }
 
+    #skill-dist {
+        width: 80%;
+    }
+
+    .skill-dist-line0 {
+      left: 10%;
+      border-left: none;
+    }
+
+    .skill-dist-line0::before {
+      border-left: none;
+    }
+
     .skill-dist-line::before {
         font-size: 12px;
         font-weight: bold;
+    }
+
+    .skill-dist-line1 {
+       left: 30%;
+    }
+
+    .skill-dist-line3 {
+       left: 70%;
     }
 
     .skill-dist-line3::before {
         left: -16px;
     }
 
+    .skill-dist-line4 {
+       left: 90%;
+    }
+
+    .skill-progress {
+        width: 80%;
+    }
 
     #projects-text-svg {
         width: 88vw;
