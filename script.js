@@ -448,7 +448,7 @@ function setContact() {
 
         //console.log($('#contact-form-container').serializeArray());
         $.ajax({
-            url: "https://formspree.io/jaskaranbir_singh@ymail.com",
+            url: "//formspree.io/jaskaranbir_singh@ymail.com",
             method: 'POST',
             data: $('#contact-form-container').serializeArray(),
             dataType: 'json',
