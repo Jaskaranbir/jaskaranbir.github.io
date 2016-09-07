@@ -429,9 +429,36 @@ function setProjects() {
 }
 
 function setContact() {
-    ['name', 'phone', 'email', 'message'].forEach(function (e) {
+    ['name', 'email', 'subject', 'message'].forEach(function (e) {
         return $('#contact-' + e).on('input', function () {
             return $('#contact-' + e + '-label').toggleClass('fadein-bottom', !!$('#contact-' + e).val());
+        });
+    });
+
+    $('#contact-send').click(function (e) {
+        e.preventDefault();
+        //var req = new XMLHttpRequest();
+        //req.open('POST', 'contact.php', true);
+        //req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //req.onload = function () {
+        //    // do something to response
+        //    console.log(this.responseText);
+        //};
+        //req.send('sender-email=asdf&sender-message=test23434');
+
+        //console.log($('#contact-form-container').serializeArray());
+        $.ajax({
+            url: "http://formspree.io/jaskaranbir_singh@ymail.com",
+            method: 'POST',
+            data: $('#contact-form-container').serializeArray(),
+            dataType: 'json',
+
+            success: function (data) {
+                $('#contact-status').text(data[0]);
+            },
+            error: function (xhr, desc, err) {
+                $('#contact-status').text('Error: ' + err);
+            }
         });
     });
 }

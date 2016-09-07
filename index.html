@@ -303,19 +303,22 @@
 
             <form id="contact-form-container">
                 <label for="contact-name" class="contact-label" id="contact-name-label">Name</label>
-                <input id="contact-name" class="contact-form" placeholder="Name" />
-
-                <label for="contact-phone" class="contact-label" id="contact-phone-label">Phone</label>
-                <input id="contact-phone" class="contact-form" placeholder="Phone" />
+                <input name="name" id="contact-name" class="contact-form" placeholder="Name" />
 
                 <label for="contact-email" class="contact-label" id="contact-email-label">E-Mail</label>
-                <input id="contact-email" class="contact-form" placeholder="E-Mail" />
+                <input name="_replyto" id="contact-email" class="contact-form" placeholder="E-Mail" />
+
+                <label for="contact-subject" class="contact-label" id="contact-subject-label">Subject</label>
+                <input name="_subject" id="contact-subject" class="contact-form" placeholder="Subject" />
+
+                <input type="text" name="_gotcha" style="display:none" />
 
                 <label for="contact-message" class="contact-label" id="contact-message-label">Message</label>
-                <textarea id="contact-message" class="contact-form" placeholder="Message"></textarea>
+                <textarea name="message" id="contact-message" class="contact-form" placeholder="Message"></textarea>
 
-                <button type="submit">Submit</button>
+                <button type="submit" id="contact-send">Send</button>
             </form>
+            <div id="contact-status"></div>
 
             <div id="profiles-text">PROFILES</div>
 

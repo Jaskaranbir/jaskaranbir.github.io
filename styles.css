@@ -1038,8 +1038,13 @@ body {
         box-shadow: 0 0 0 2pt #5D5956;
     }
 
+#contact-status {
+    margin-top: 16px;
+    font-family: roboto;
+}
+
 #profiles-text {
-    margin-top: 50px;
+    margin-top: 20px;
     margin-bottom: 25px;
     background-color: #E1E1E1;
     font-family: Roboto;
