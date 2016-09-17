@@ -455,6 +455,7 @@ function setContact() {
 
             success: function (data) {
                 $('#contact-status').text(data[0]);
+				alert(data);
             },
             error: function (xhr, desc, err) {
                 $('#contact-status').text('Error: ' + err);
