@@ -441,8 +441,7 @@ function setContact() {
         e.preventDefault();
         if (mailSuccess)
             return;
-        console.log($('#contact-form-container').serialize())
-
+        
         $.ajax({
             url: "////formspree.io/jaskaranbir_singh@ymail.com",
             method: 'POST',
@@ -454,7 +453,7 @@ function setContact() {
                 mailSuccess = true;
             }
         });
-
+        console.log(mailSuccess);
         $('#contact-status').text(mailSuccess ? 'Mail Sent Successfully' : 'An Error Occurred. Please make sure the email you entered is valid. You may also want to contact me directly on my email: dhjaskar@sheridancollege.ca');
     });
 }
