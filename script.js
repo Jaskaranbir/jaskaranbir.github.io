@@ -451,8 +451,8 @@ function setContact() {
 
             success: function (data) {
                 $('#contact-send').addClass('contact-button-finalize');
-                mailSuccess = true;
                 $contactStatus.text('Mail Sent Successfully');
+                mailSuccess = true;
                 return;
             }
         });
