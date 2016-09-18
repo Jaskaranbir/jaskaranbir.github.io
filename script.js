@@ -453,6 +453,7 @@ function setContact() {
                 $('#contact-send').addClass('contact-button-finalize');
                 mailSuccess = true;
                 $contactStatus.text('An Error Occurred. Please make sure the email you entered is valid. You may also want to contact me directly on my email: dhjaskar@sheridancollege.ca');
+                return;
             }
         });
 
