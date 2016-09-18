@@ -449,14 +449,17 @@ function setContact() {
             data: $('#contact-form-container').serializeArray(),
             dataType: 'json',
 
-            success: function (data) {
+            success: function () {
                 $('#contact-send').addClass('contact-button-finalize');
                 $contactStatus.text('Mail Sent Successfully');
                 mailSuccess = true;
                 return;
-            }
-        });
+            },
 
-        $contactStatus.text('An Error Occurred. Please make sure the email you entered is valid. You may also want to contact me directly on my email: dhjaskar@sheridancollege.ca');
+            error: function() {
+                $contactStatus.text('An Error Occurred. Please make sure the email you entered is valid. You may also want to contact me directly on my email: dhjaskar@sheridancollege.ca');
+        }
+
+        });
     });
 }
