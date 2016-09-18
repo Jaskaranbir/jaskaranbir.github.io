@@ -1008,6 +1008,7 @@ body {
     border: none;
     border-bottom: 2px solid rgba(93, 89, 86, 0.65);
     color: #5D5956;
+    overflow: hidden;
 }
 
     .contact-form:focus {
@@ -1038,6 +1039,34 @@ body {
         outline: none;
         box-shadow: 0 0 0 2pt #5D5956;
     }
+
+.contact-button-finalize {
+    box-shadow: none !important;
+    -webkit-animation: contact-button-remove 500ms;
+    animation: contact-button-remove 500ms;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes contact-button-remove {
+    99% {
+        opacity: 0;
+    }
+    100% {
+        cursor: default;
+        opacity: 0;
+    }
+}
+
+@keyframes contact-button-remove {
+    99% {
+        opacity: 0;
+    }
+    100% {
+        cursor: default;
+        opacity: 0;
+    }
+}
 
 #contact-status {
     margin-top: 16px;

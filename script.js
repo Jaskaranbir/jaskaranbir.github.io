@@ -435,18 +435,13 @@ function setContact() {
         });
     });
 
+    var mailSuccess = false;
+
     $('#contact-send').click(function (e) {
         e.preventDefault();
-        //var req = new XMLHttpRequest();
-        //req.open('POST', 'contact.php', true);
-        //req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //req.onload = function () {
-        //    // do something to response
-        //    console.log(this.responseText);
-        //};
-        //req.send('sender-email=asdf&sender-message=test23434');
-
-        //console.log($('#contact-form-container').serializeArray());
+        if (mailSuccess)
+            return;
+        
         $.ajax({
             url: "////formspree.io/jaskaranbir_singh@ymail.com",
             method: 'POST',
@@ -454,12 +449,11 @@ function setContact() {
             dataType: 'json',
 
             success: function (data) {
-                $('#contact-status').text(data[0]);
-				alert(data);
-            },
-            error: function (xhr, desc, err) {
-                $('#contact-status').text('Error: ' + err);
+                $('#contact-send').addClass('contact-button-finalize');
+                mailSuccess = true;
             }
         });
+        console.log(mailSuccess);
+        $('#contact-status').text(mailSuccess ? 'Mail Sent Successfully' : 'An Error Occurred. Please make sure the email you entered is valid. You may also want to contact me directly on my email: dhjaskar@sheridancollege.ca');
     });
 }
