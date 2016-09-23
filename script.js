@@ -40,7 +40,7 @@ $window.on('beforeunload', function () {
         $('#iam-text').append(', I am').hide().delay(300).fadeIn(1000);
     });
 
-    $('.skill-dist-line').height($('#skills-content').height() - $('.skill-extra').height() + $('.skill-progress').height());
+    $('.skill-dist-line').height($('#skills-content').height() +  (2 * $('.skill-progress').height()));
 
     setNav();
     isMobileDevice = $window.width() < 700 || $window.height() < 600;
@@ -148,7 +148,6 @@ function setWindowScrollEvents() {
     var changeNavColor = false;
     var eduAnimDone = false;
     var skillAnimDone = false;
-    var projectsAnimDone = false;
     var scrollAnimsDone = false;
     var lastScrollPoint = 0;
 
@@ -170,16 +169,16 @@ function setWindowScrollEvents() {
         if (!scrollAnimsDone) {
             if (!eduAnimDone) doEducationAnimation(bottomScroll);
             else if (!skillAnimDone) doSkillAnimation(bottomScroll);
-            else if (!projectsAnimDone) doProjectsAnimation(bottomScroll);
+            else doProjectsAnimation(bottomScroll);
         }
 
         var scrollDelta = scrollPoint - lastScrollPoint;
 
-        if (scrollDelta > 20) {
+        if (scrollDelta > 40) {
             $navBar.css('top', '-80px');
             $navBarList.css('margin-top', '-80px');
         }
-        else if (scrollDelta < -0) {
+        else if (scrollDelta < 0) {
             $navBar.css('top', '0');
             $navBarList.css('margin-top', '0');
         }
@@ -221,6 +220,8 @@ function setWindowScrollEvents() {
     }, 250);
 
     var $eduCourseGrade = $('.edu-course-grade');
+    var $skillBars = $('.skill-progressbar');
+    var skillBarCount = $skillBars.length - 1;
     var canvasIndexOffset = 0;
     var canvasesCount = canvases.length;
 
@@ -267,10 +268,11 @@ function setWindowScrollEvents() {
     }
 
     function doSkillAnimation(bottomScroll) {
-        $('.skill-progressbar').each(function (i, e) {
+        $skillBars.each(function (i, e) {
             if (bottomScroll <= $(e).offset().top) return;
             $(e).addClass('width' + $(e).data('progress'));
-            if (i === 10) skillAnimDone = true;
+            console.log(i, skillBarCount);
+            if (i === skillBarCount) skillAnimDone = true;
         });
     }
 
@@ -280,7 +282,6 @@ function setWindowScrollEvents() {
             $('#cir2').addClass('pop-circle');
             $('#projects-text').addClass('text-outline');
             $('#projects-tagline-text').addClass('semi-text-fadein');
-            projectsAnimDone = true;
             scrollAnimsDone = true;
         }
     }
@@ -288,7 +289,7 @@ function setWindowScrollEvents() {
 
 function setWindowResizeEvents() {
     $window.on('resize', function () {
-        $('.skill-dist-line').height($('#skills-content').height() - $('.skill-extra').height() + $('.skill-progress').height());
+        $('.skill-dist-line').height($('#skills-content').height() + (2 * $('.skill-progress').height()));
 
         setTimeout(function () {
             $('#projects-scroller').height($('#projects-carousel img').eq(-carouselOffset).outerHeight());
@@ -458,7 +459,7 @@ function setContact() {
 
             error: function() {
                 $contactStatus.text('An Error Occurred. Please make sure the email you entered is valid. You may also want to contact me directly on my email: dhjaskar@sheridancollege.ca');
-        }
+            }
 
         });
     });

@@ -30,6 +30,10 @@
                     Projects
                     <div class="nav-triangle transition"></div>
                 </li>
+                <li class="transition" data-anchor="work-exp">
+                    Work Experience
+                    <div class="nav-triangle transition"></div>
+                </li>
                 <li class="transition" data-anchor="contact">
                     Contact
                     <div class="nav-triangle transition"></div>
@@ -67,6 +71,9 @@
             <div class="header4">ABOUT ME</div>
             <div id="about-me-info">
                 A man really likes technology. The man has passion for developing programs using Java, HTML, CSS, Javascript and PHP. Additionally, the man is a minimalist who loves writing beautiful, efficient and elegant code. He also knows how to work with databases using SQL and is also expeirenced with linux. That man is <strong>me</strong>. Want someone to have around while eating pizza and have a nerdy talk? You got the guy...
+                <div id="res-download">
+                    <button id="res-download-button"><a href="http://mobile.sheridanc.on.ca/~dhjaskar/files/resume.pdf" target="_blank">Download My Resume</a></button>
+                </div>
             </div>
         </div>
 
@@ -238,30 +245,25 @@
             <div id="skills-content">
                 <div class="skill-divider"></div>
                 <div class="skill-desc header2"><span class="skill-desc-title">Programming Languages</span></div>
-                <div class="skill-progress"><span class="header3 skill-title">Java</span><div class="skill-progressbar progress-java transition" data-progress="90"></div></div>
-                <div class="skill-progress"><span class="header3 skill-title">HTML/CSS</span><div class="skill-progressbar progress-html" data-progress="90"></div></div>
-                <div class="skill-progress"><span class="header3 skill-title">Javascript/JQuery</span><div class="skill-progressbar progress-javascript" data-progress="85"></div></div>
-                <div class="skill-progress"><span class="header3 skill-title">PHP</span><div class="skill-progressbar progress-php" data-progress="40"></div></div>
-                <div class="skill-progress"><span class="header3 skill-title">SQL</span><div class="skill-progressbar progress-sql" data-progress="65"></div></div>
+                <div class="skill-progress"><span class="header3 skill-title">Java</span><div class="skill-progressbar" data-progress="90"></div></div>
+                <div class="skill-progress"><span class="header3 skill-title">HTML/CSS</span><div class="skill-progressbar" data-progress="90"></div></div>
+                <div class="skill-progress"><span class="header3 skill-title">Javascript/JQuery</span><div class="skill-progressbar" data-progress="85"></div></div>
+                <div class="skill-progress"><span class="header3 skill-title">PHP</span><div class="skill-progressbar" data-progress="40"></div></div>
+                <div class="skill-progress"><span class="header3 skill-title">SQL</span><div class="skill-progressbar" data-progress="65"></div></div>
+                <div class="skill-progress"><span class="header3 skill-title">Linux/Bash</span><div class="skill-progressbar" data-progress="75"></div></div>
                 <!--------------------------------------------------------->
                 <div class="skill-divider"></div>
                 <div class="skill-desc header2"><span class="skill-desc-title">Additional Skills</span></div>
-                <div class="skill-progress skill-white"><span class="header3 skill-title gray-color">Photoshop</span><div class="skill-progressbar skill-progressbar-white progress-photoshop" data-progress="95"></div></div>
-                <div class="skill-progress skill-white"><span class="header3 skill-title gray-color">Visio</span><div class="skill-progressbar skill-progressbar-white progress-visio" data-progress="85"></div></div>
-                <div class="skill-progress skill-white"><span class="header3 skill-title gray-color">Word/Powerpoint</span><div class="skill-progressbar skill-progressbar-white progress-powerpoint" data-progress="95"></div></div>
+                <div class="skill-progress skill-white"><span class="header3 skill-title gray-color">Android Roms</span><div class="skill-progressbar skill-progressbar-white" data-progress="80"></div></div>
+                <div class="skill-progress skill-white"><span class="header3 skill-title gray-color">Photoshop</span><div class="skill-progressbar skill-progressbar-white" data-progress="95"></div></div>
+                <div class="skill-progress skill-white"><span class="header3 skill-title gray-color">Visio</span><div class="skill-progressbar skill-progressbar-white" data-progress="85"></div></div>
+                <div class="skill-progress skill-white"><span class="header3 skill-title gray-color">Word/Powerpoint</span><div class="skill-progressbar skill-progressbar-white" data-progress="95"></div></div>
                 <!--------------------------------------------------------->
                 <div class="skill-divider"></div>
                 <div class="skill-desc header2"><span class="skill-desc-title">Attributes</span></div>
-                <div class="skill-progress skill-gray"><span class="header3 skill-title">Reliable</span><div class="skill-progressbar skill-progressbar-gray progress-reliable" data-progress="95"></div></div>
-                <div class="skill-progress skill-gray"><span class="header3 skill-title">Multitasking</span><div class="skill-progressbar skill-progressbar-gray progress-multitask" data-progress="90"></div></div>
-                <div class="skill-progress skill-gray"><span class="header3 skill-title">Leadership</span><div class="skill-progressbar skill-progressbar-gray progress-leadership" data-progress="90"></div></div> <!--------------------------------------------------------->
-                <div class="skill-extra">
-                    <div class="header2 skill-extra-title">Extra Interests</div>
-                    <div class="skill-extra-item">Linux</div>
-                    <div class="skill-extra-item">Android Embedded</div>
-                    <div class="skill-extra-item">Spring Framework (Java)</div>
-                    <div class="skill-extra-item">JDBC</div>
-                </div>
+                <div class="skill-progress skill-gray"><span class="header3 skill-title">Reliable</span><div class="skill-progressbar skill-progressbar-gray" data-progress="95"></div></div>
+                <div class="skill-progress skill-gray"><span class="header3 skill-title">Multitasking</span><div class="skill-progressbar skill-progressbar-gray" data-progress="90"></div></div>
+                <div class="skill-progress skill-gray"><span class="header3 skill-title">Leadership</span><div class="skill-progressbar skill-progressbar-gray" data-progress="90"></div></div> <!--------------------------------------------------------->
             </div>
         </div>
 
@@ -299,42 +301,62 @@
         </div>
 
         <div id="work-exp" class="section-div">
-        
+            <div id="work-text" class="header4">Work Experience</div>
+            <div class="work-section">
+                <div class="work-header">
+                    <div class="work-info">
+                        <div class="work-title">Customer Service - Tim Hortons (Full Time, Part Time)</div>
+                        <span class="work-area">Toronto, On</span>
+                        <span class="work-duration">May 2016 - Present</span>
+                    </div>
+                    <img class="work-logo" src="images/tims-logo.png" />
+                </div>
+                <div class="work-attrs">
+                    <ul>
+                        <li>Provide friendly, efficient customer service in a fast-paced environment</li>
+                        <li>Process payments and addressing customer concerns</li>
+                        <li>Upsell additional menu items to increase restaurant profits</li>
+                        <li>Assissted in training new emplyees and inventory management</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-            <div id="contact" class="section-div">
-                <div id="contact-text" class="header4">Contact Me</div>
+        <hr class="section-divider" />
 
-                <form id="contact-form-container">
-                    <label for="contact-name" class="contact-label" id="contact-name-label">Name</label>
-                    <input name="name" id="contact-name" class="contact-form" placeholder="Name" />
+        <div id="contact" class="section-div">
+            <div id="contact-text" class="header4">Contact Me</div>
 
-                    <label for="contact-email" class="contact-label" id="contact-email-label">E-Mail</label>
-                    <input name="_replyto" id="contact-email" class="contact-form" placeholder="E-Mail" />
+            <form id="contact-form-container">
+                <label for="contact-name" class="contact-label" id="contact-name-label">Name</label>
+                <input name="name" id="contact-name" class="contact-form" placeholder="Name" />
 
-                    <label for="contact-subject" class="contact-label" id="contact-subject-label">Subject</label>
-                    <input name="_subject" id="contact-subject" class="contact-form" placeholder="Subject" />
+                <label for="contact-email" class="contact-label" id="contact-email-label">E-Mail</label>
+                <input name="_replyto" id="contact-email" class="contact-form" placeholder="E-Mail" />
 
-                    <input type="text" name="_gotcha" style="display:none" />
+                <label for="contact-subject" class="contact-label" id="contact-subject-label">Subject</label>
+                <input name="_subject" id="contact-subject" class="contact-form" placeholder="Subject" />
 
-                    <label for="contact-message" class="contact-label" id="contact-message-label">Message</label>
-                    <textarea name="message" id="contact-message" class="contact-form" placeholder="Message"></textarea>
+                <input type="text" name="_gotcha" style="display:none" />
 
-                    <button id="contact-send">Send</button>
-                </form>
-                <div id="contact-status"></div>
+                <label for="contact-message" class="contact-label" id="contact-message-label">Message</label>
+                <textarea name="message" id="contact-message" class="contact-form" placeholder="Message"></textarea>
 
-                <div id="profiles-text">PROFILES</div>
+                <button id="contact-send">Send</button>
+            </form>
+            <div id="contact-status"></div>
 
-                <div class="profile-img-container"><a href="http://stackoverflow.com/users/4948426/jaskaranbir-singh"><img src="images/so.svg" class="profile-img" /></a></div>
-                <div class="profile-img-container"><a href="https://github.com/Jaskaranbir"><img src="images/github.svg" class="profile-img" /></a></div>
-            </div>
+            <div id="profiles-text">PROFILES</div>
 
-            <div id="site-info">
-                Designed by Jaskaran
-            </div>
-
+            <div class="profile-img-container"><a href="http://stackoverflow.com/users/4948426/jaskaranbir-singh"><img src="images/so.svg" class="profile-img" /></a></div>
+            <div class="profile-img-container"><a href="https://github.com/Jaskaranbir"><img src="images/github.svg" class="profile-img" /></a></div>
         </div>
+
+        <div id="site-info">
+            Designed from scratch with passion by Jaskaran ;)
+        </div>
+
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <script src="script.js"></script>
