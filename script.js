@@ -271,7 +271,6 @@ function setWindowScrollEvents() {
         $skillBars.each(function (i, e) {
             if (bottomScroll <= $(e).offset().top) return;
             $(e).addClass('width' + $(e).data('progress'));
-            console.log(i, skillBarCount);
             if (i === skillBarCount) skillAnimDone = true;
         });
     }
@@ -347,7 +346,7 @@ function setProjects() {
 
     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
 
-    var projectInfo = [[['Super Mario'], ['Java'], ['JavaFX'], ['A simple clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using pure JavaFX.']], [['MySQL-GUI'], ['Java'], ['Spring Framework | JDBC | Maven | Swing'], ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']], [['Falling Robots'], ['Java'], ['Becker Robots'], ['A simple java game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']]];
+    var projectInfo = [[['Super Mario'], ['Java'], ['JavaFX'], ['A clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using JavaFX.']], [['MySQL-GUI'], ['Java'], ['Spring Framework | JDBC | Maven | Swing'], ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']], [['Falling Robots'], ['Java'], ['Becker Robots'], ['A simple game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']], [['Jeopardy'], ['Java'], ['Servlets'], ['Jeopardy developed using java servlets in MVC Architecture.']], [['Slot Machine'], ['PHP'], ['HTML, CSS'], ['Simple game created by using PHP single page session.']]];
 
     function updateProjectInfo() {
         $projectAttr.each(function (i) {
@@ -365,6 +364,9 @@ function setProjects() {
     }
 
     updateProjectInfo();
+	
+	var carouselCount = $carouselContChild.length;
+	var translateOffset = 100 / carouselCount;
 
     $('.stick-left').click(function () {
         switch (++carouselOffset) {
@@ -374,7 +376,7 @@ function setProjects() {
                 }, 800); break;
 
             case 1:
-                carouselOffset = -2;
+                carouselOffset = -carouselCount + 1;
                 setTimeout(function () {
                     $rightScrollButton.text('| <').css('letter-spacing', '-1vh');
                 }, 800);
@@ -389,21 +391,21 @@ function setProjects() {
         $rightScrollButton.text('>>').css('letter-spacing', '-1.5vh');
 
         $carouselContainer.css({
-            '-webkit-transform': 'translateX(' + 33.33 * carouselOffset + '%)',
-            'transform': 'translateX(' + 33.33 * carouselOffset + '%)'
+            '-webkit-transform': 'translateX(' + translateOffset * carouselOffset + '%)',
+            'transform': 'translateX(' + translateOffset * carouselOffset + '%)'
         });
-        $carouselContChild.eq(carouselOffset === -2 ? 0 : -carouselOffset + 1).children().eq(0).addClass('carousel-img-width-alt');
+        $carouselContChild.eq(carouselOffset === (-carouselCount - 1) ? 0 : -carouselOffset + 1).children().eq(0).addClass('carousel-img-width-alt');
         $carouselContChild.eq(-carouselOffset).children().eq(0).removeClass('carousel-img-width-alt').addClass('carousel-img-width');
     });
 
     $('.stick-right').click(function () {
         switch (--carouselOffset) {
-            case -2:
+            case (-carouselCount + 1):
                 setTimeout(function () {
                     $rightScrollButton.text('| <').css('letter-spacing', '-1vh');
                 }, 800); break;
 
-            case -3:
+            case (-carouselCount):
                 carouselOffset = 0;
                 setTimeout(function () {
                     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
@@ -419,8 +421,8 @@ function setProjects() {
         $leftScrollButton.text('<<').css('letter-spacing', '-1.5vh');
 
         $carouselContainer.css({
-            '-webkit-transform': 'translateX(' + 33.33 * carouselOffset + '%)',
-            'transform': 'translateX(' + 33.33 * carouselOffset + '%)'
+            '-webkit-transform': 'translateX(' + translateOffset * carouselOffset + '%)',
+            'transform': 'translateX(' + translateOffset * carouselOffset + '%)'
         });
         $carouselContChild.eq(-carouselOffset - 1).children().eq(0).addClass('carousel-img-width-alt');
         $carouselContChild.eq(-carouselOffset).children().eq(0).removeClass('carousel-img-width-alt').addClass('carousel-img-width');
