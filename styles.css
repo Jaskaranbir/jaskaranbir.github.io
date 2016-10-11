@@ -430,6 +430,11 @@ body {
     text-align: left;
 }
 
+.edu-bottom-margin {
+	padding-bottom: 3px;
+	border-bottom: 2px solid rgba(93, 89, 86, 0.6);
+}
+
 .edu-school-time {
     float: right;
     position: relative;
@@ -489,7 +494,7 @@ body {
     background-color: rgba(0,0,0,0.6);
 }
 
-#gpa {
+.gpa {
     margin: 20px auto auto auto;
     padding: 0 10%;
     width: 102px;
@@ -498,6 +503,17 @@ body {
     font-weight: bold;
     color: #ED5446;
     border-bottom: 2px solid rgba(0,0,0,0.8);
+}
+
+.edu-extra-curr {
+	margin: 35px auto 20px 20px;
+	padding-bottom: 84px;
+}
+
+.edu-extra-curr-desc {
+	margin-top: 55px;
+	padding-bottom: 5px;
+	text-align: left;
 }
 
 .section-divider {
@@ -588,7 +604,7 @@ body {
 }
 
     .skill-dist-line3::before {
-        content: 'Expert';
+        content: 'Advanced';
     }
 
 .skill-dist-line4 {
@@ -597,7 +613,7 @@ body {
 }
 
     .skill-dist-line4::before {
-        content: 'Master';
+        content: 'Expert';
     }
 
 #skills-content {

@@ -203,13 +203,15 @@ function setWindowScrollEvents() {
         $sectionDivs.each(function (i, e) {
             var $e = $(e);
             var topOffset = $e.offset().top;
+			
             if (scrollPoint + windowHeight / 2 >= topOffset - 100 && scrollPoint + windowHeight / 2 < topOffset + $e.height()) {
-                $navBarItem.eq(i).css('border-bottom-color', 'white');
+				$navBarItem.eq(i).css('border-bottom-color', 'white');
 
                 if (!isMobileDevice)
                     $navTriangles.eq(i).css('opacity', '1');
             }
             else {
+				console.log($e);
                 $navBarItem.eq(i).css('border-bottom-color', 'transparent');
                 if (!isMobileDevice)
                     $navTriangles.eq(i).css('opacity', '0');
@@ -346,7 +348,7 @@ function setProjects() {
 
     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
 
-    var projectInfo = [[['Super Mario'], ['Java'], ['JavaFX'], ['A clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using JavaFX.']], [['MySQL-GUI'], ['Java'], ['Spring Framework | JDBC | Maven | Swing'], ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']], [['Falling Robots'], ['Java'], ['Becker Robots'], ['A simple game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']], [['Jeopardy'], ['Java'], ['Servlets'], ['Jeopardy developed using java servlets in MVC Architecture.']], [['Slot Machine'], ['PHP'], ['HTML, CSS'], ['Simple game created by using PHP single page session.']]];
+    var projectInfo = [[['Super Mario'], ['Java'], ['JavaFX'], ['A clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using JavaFX.']], [['MySQL-GUI'], ['Java'], ['Spring Framework | JDBC | Maven | Swing'], ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']], [['Jeopardy'], ['Java'], ['Servlets'], ['Jeopardy developed using java servlets in MVC Architecture.']], [['Falling Robots'], ['Java'], ['Becker Robots'], ['A simple game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']], [['Slot Machine'], ['PHP'], ['HTML, CSS'], ['Simple game created by using PHP single page session.']]];
 
     function updateProjectInfo() {
         $projectAttr.each(function (i) {
