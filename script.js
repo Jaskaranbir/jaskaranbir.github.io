@@ -102,7 +102,7 @@ $window.on('beforeunload', function() {
             $('#about-desc').addClass('fadeout');
 
             setTimeout(function() {
-                $('#about-desc').text('I make and screw with stuff.').removeClass('fadeout').addClass('fadein');
+                $('#about-desc').text('I make stuff.').removeClass('fadeout').addClass('fadein');
             }, 2000);
         }, 1000);
 
@@ -334,7 +334,8 @@ function setEducation() {
 
 function setProjects() {
     var $projectAttr = $('.project-attr');
-    var $projectAttrDiv = $('.project-attr-div, .project-name');
+    var $projectName = $('.project-name');
+    var $projectAttrDiv = $('.project-attr-div').add($projectName);
     var $leftScrollButton = $('.carousel-scroll-button.stick-left');
     var $rightScrollButton = $('.carousel-scroll-button.stick-right');
     var $carouselContainer = $('#projects-carousel-container');
@@ -347,37 +348,44 @@ function setProjects() {
             ['Super Mario'],
             ['Java'],
             ['JavaFX'],
-            ['A clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using JavaFX.']
+            ['A clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using JavaFX.'],
+            ['https://github.com/Jaskaranbir/Super-Mario']
         ],
         [
             ['MySQL-GUI'],
             ['Java'],
             ['Spring Framework | JDBC | Maven | Swing'],
-            ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']
+            ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.'],
+            ['https://github.com/Jaskaranbir/MySQL_GUI']
         ],
         [
             ['Jeopardy'],
             ['Java'],
             ['Servlets'],
-            ['Jeopardy developed using java servlets in MVC Architecture.']
+            ['Jeopardy developed using java servlets in MVC Architecture.'],
+            ['https://github.com/Jaskaranbir/Jeopardy_Java-Servlets']
         ],
         [
             ['Falling Robots'],
             ['Java'],
             ['Becker Robots'],
-            ['A simple game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']
+            ['A simple game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.'],
+            ['https://github.com/Jaskaranbir/Falling-Robots']
         ],
         [
             ['Slot Machine'],
             ['PHP'],
             ['HTML, CSS'],
-            ['Simple game created by using PHP single page session.']
+            ['Simple game created by using PHP single page session.'],
+            ['https://github.com/Jaskaranbir/PHP-Single-Page-Session']
         ]
     ];
 
     function updateProjectInfo() {
         $projectAttr.each(function(i) {
-            return fadeTransformText($projectAttr.eq(i), projectInfo[-carouselOffset][i]);
+            var curProjectInfo = projectInfo[-carouselOffset];
+            $projectName.eq(i).parent().attr('href', curProjectInfo[4]);
+            return fadeTransformText($projectAttr.eq(i), curProjectInfo[i]);
         });
 
         function fadeTransformText($element, text) {
@@ -422,8 +430,8 @@ function setProjects() {
             '-webkit-transform': 'translateX(' + translateOffset * carouselOffset + '%)',
             'transform': 'translateX(' + translateOffset * carouselOffset + '%)'
         });
-        $carouselContChild.eq(carouselOffset === (-carouselCount - 1) ? 0 : -carouselOffset + 1).children().eq(0).addClass('carousel-img-width-alt');
-        $carouselContChild.eq(-carouselOffset).children().eq(0).removeClass('carousel-img-width-alt').addClass('carousel-img-width');
+        $carouselContChild.eq(carouselOffset === (-carouselCount - 1) ? 0 : -carouselOffset + 1).find('img').addClass('carousel-img-width-alt');
+        $carouselContChild.eq(-carouselOffset).find('img').removeClass('carousel-img-width-alt').addClass('carousel-img-width');
     });
 
     $('.stick-right').click(function() {
@@ -453,8 +461,8 @@ function setProjects() {
             '-webkit-transform': 'translateX(' + translateOffset * carouselOffset + '%)',
             'transform': 'translateX(' + translateOffset * carouselOffset + '%)'
         });
-        $carouselContChild.eq(-carouselOffset - 1).children().eq(0).addClass('carousel-img-width-alt');
-        $carouselContChild.eq(-carouselOffset).children().eq(0).removeClass('carousel-img-width-alt').addClass('carousel-img-width');
+        $carouselContChild.eq(-carouselOffset - 1).find('img').addClass('carousel-img-width-alt');
+        $carouselContChild.eq(-carouselOffset).children(0).find('img').removeClass('carousel-img-width-alt').addClass('carousel-img-width');
     });
 
     setContact();
