@@ -20,16 +20,16 @@ var completeRadian = Math.PI * 2;
 var carouselOffset = 0;
 var projectDescOffset = 0;
 
-$window.on('beforeunload', function () {
+$window.on('beforeunload', function() {
     $window.scrollTop(0);
 });
 
-(function () {
+(function() {
     $('#greeting').hide().fadeIn(2000).delay(100).animate({
         'font-size': '3vh',
         'margin-top': '0',
         'height': '10vh'
-    }, 1000, function () {
+    }, 1000, function() {
         $('#greeting').css({
             'position': 'relative',
             'left': '0',
@@ -40,23 +40,23 @@ $window.on('beforeunload', function () {
         $('#iam-text').append(', I am').hide().delay(300).fadeIn(1000);
     });
 
-    $('.skill-dist-line').height($('#skills-content').height() +  (2 * $('.skill-progress').height()));
+    $('.skill-dist-line').height($('#skills-content').height() + (2 * $('.skill-progress').height()));
 
     setNav();
     isMobileDevice = $window.width() < 700 || $window.height() < 600;
 
     if ($initials.height() !== $initials.width()) $initials.width($initials.height());
 
-    setTimeout(function () {
+    setTimeout(function() {
         $('#design-text').css('border-right', '2px solid white');
-        "Design".split('').forEach(function (y, i) {
-            setTimeout(function () {
+        "Design".split('').forEach(function(y, i) {
+            setTimeout(function() {
                 $('#design-text').append(y);
             }, i * 100);
         });
     }, 6400);
 
-    setTimeout(function () {
+    setTimeout(function() {
         $('#design-text').css('border-right', 'none');
         $('#and-text-mask').show();
         $('#and-text').show().animate({
@@ -66,9 +66,9 @@ $window.on('beforeunload', function () {
 
     var $codeText = $('#code-text');
 
-    setTimeout(function () {
-        "Code".split('').forEach(function (y, i) {
-            setTimeout(function () {
+    setTimeout(function() {
+        "Code".split('').forEach(function(y, i) {
+            setTimeout(function() {
                 $codeText.append('<span style = "background-color: white; color: black">' + y + '</span>');
                 if (i > 0) $codeText.children('span').eq(i - 1).css({
                     'background-color': 'transparent',
@@ -77,7 +77,7 @@ $window.on('beforeunload', function () {
             }, i * 100);
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
             $codeText.children('span').eq(3).css({
                 'background-color': 'transparent',
                 'color': 'white'
@@ -85,23 +85,23 @@ $window.on('beforeunload', function () {
         }, 410);
     }, 7400);
 
-    $('#skip-button').click(function () {
+    $('#skip-button').click(function() {
         $('#header-space').dequeue();
     });
 
     $('#header-space').delay(8500).animate({
         'height': '50vh'
-    }, 1400, function () {
+    }, 1400, function() {
         $navBarList.css('margin-top', '0');
         $initials.css('top', '0');
         $('body').css('overflow', 'auto');
         $('#skip-button').remove();
         projectDescOffset = $projectDesc.offset().top + $projectDesc.height() / 2;
 
-        setTimeout(function () {
+        setTimeout(function() {
             $('#about-desc').addClass('fadeout');
 
-            setTimeout(function () {
+            setTimeout(function() {
                 $('#about-desc').text('I make and screw with stuff.').removeClass('fadeout').addClass('fadein');
             }, 2000);
         }, 1000);
@@ -127,8 +127,14 @@ function setWindowScrollEvents() {
     var scrollPoint = 0;
     var bottomScroll = 0;
 
-    $window.scroll(function () {
+    $window.scroll(function() {
         scrollPoint = $window.scrollTop();
+
+        if (projectDescFixed && bottomScroll > projectDescOffset + $projectDesc.height() / 1.3 || bottomScroll < projectDescOffset - $projectDesc.height() / 2) {
+            $projectDesc.removeClass('project-desc-fixed');
+            $projects.removeClass('bottom-padding');
+            projectDescFixed = false;
+        }
 
         var scrollOpacity = scrollPoint / 350;
         if (scrollOpacity < 1.1) $header.css({
@@ -151,7 +157,7 @@ function setWindowScrollEvents() {
     var scrollAnimsDone = false;
     var lastScrollPoint = 0;
 
-    setInterval(function () {
+    setInterval(function() {
         if (!hasScrolled) return;
         hasScrolled = false;
 
@@ -159,8 +165,7 @@ function setWindowScrollEvents() {
             $navBar.removeClass('nav-alt-color');
             $initials.removeClass('initials-alt');
             changeNavColor = true;
-        }
-        else if (changeNavColor) {
+        } else if (changeNavColor) {
             $navBar.addClass('nav-alt-color');
             $initials.addClass('initials-alt');
             changeNavColor = false;
@@ -177,8 +182,7 @@ function setWindowScrollEvents() {
         if (scrollDelta > 40) {
             $navBar.css('top', '-80px');
             $navBarList.css('margin-top', '-80px');
-        }
-        else if (scrollDelta < 0) {
+        } else if (scrollDelta < 0) {
             $navBar.css('top', '0');
             $navBarList.css('margin-top', '0');
         }
@@ -186,32 +190,22 @@ function setWindowScrollEvents() {
         lastScrollPoint = scrollPoint;
 
         bottomScroll = scrollPoint + windowHeight;
-
-        if (!isMobileDevice) {
-            if (!projectDescFixed && bottomScroll > projectDescOffset && bottomScroll < projectDescOffset + $projectDesc.height() / 2) {
-                $projectDesc.addClass('project-desc-fixed');
-                $projects.addClass('bottom-padding');
-                projectDescFixed = true;
-            }
-            else if (projectDescFixed && bottomScroll > projectDescOffset + $projectDesc.height() / 1.3 || bottomScroll < projectDescOffset - $projectDesc.height() / 2) {
-                $projectDesc.removeClass('project-desc-fixed');
-                $projects.removeClass('bottom-padding');
-                projectDescFixed = false;
-            }
+        if (!isMobileDevice && !projectDescFixed && bottomScroll > projectDescOffset && bottomScroll < projectDescOffset + $projectDesc.height() / 2) {
+            $projectDesc.addClass('project-desc-fixed');
+            $projects.addClass('bottom-padding');
+            projectDescFixed = true;
         }
 
-        $sectionDivs.each(function (i, e) {
+        $sectionDivs.each(function(i, e) {
             var $e = $(e);
             var topOffset = $e.offset().top;
-			
+
             if (scrollPoint + windowHeight / 2 >= topOffset - 100 && scrollPoint + windowHeight / 2 < topOffset + $e.height()) {
-				$navBarItem.eq(i).css('border-bottom-color', 'white');
+                $navBarItem.eq(i).css('border-bottom-color', 'white');
 
                 if (!isMobileDevice)
                     $navTriangles.eq(i).css('opacity', '1');
-            }
-            else {
-				console.log($e);
+            } else {
                 $navBarItem.eq(i).css('border-bottom-color', 'transparent');
                 if (!isMobileDevice)
                     $navTriangles.eq(i).css('opacity', '0');
@@ -230,7 +224,7 @@ function setWindowScrollEvents() {
     function doEducationAnimation(bottomScroll) {
 
         while (canvasIndexOffset < canvasesCount && bottomScroll > $(canvases[0]).offset().top)
-            (function () {
+            (function() {
                 var context = canvases[0].getContext('2d');
                 var end = $eduCourseGrade.eq(canvasIndexOffset).data('number') + 0.01;
                 var cur = 0;
@@ -254,7 +248,7 @@ function setWindowScrollEvents() {
 
                     if (stop) return;
 
-                    requestAnimationFrame(function () {
+                    requestAnimationFrame(function() {
                         return cur <= end ? animate(cur) : animate(end, true);
                     });
 
@@ -270,7 +264,7 @@ function setWindowScrollEvents() {
     }
 
     function doSkillAnimation(bottomScroll) {
-        $skillBars.each(function (i, e) {
+        $skillBars.each(function(i, e) {
             if (bottomScroll <= $(e).offset().top) return;
             $(e).addClass('width' + $(e).data('progress'));
             if (i === skillBarCount) skillAnimDone = true;
@@ -289,13 +283,13 @@ function setWindowScrollEvents() {
 }
 
 function setWindowResizeEvents() {
-    $window.on('resize', function () {
+    $window.on('resize', function() {
         $('.skill-dist-line').height($('#skills-content').height() + (2 * $('.skill-progress').height()));
 
-        setTimeout(function () {
+        setTimeout(function() {
             $('#projects-scroller').height($('#projects-carousel img').eq(-carouselOffset).outerHeight());
 
-            setTimeout(function () {
+            setTimeout(function() {
                 projectDescOffset = $projectDesc.offset().top + $projectDesc.height() / 2;
             }, 600);
         }, 800);
@@ -309,15 +303,15 @@ function setWindowResizeEvents() {
 
 function setNav() {
     var navbarHeight = $navBar.height();
-    $navBarItem.each(function (i, e) {
-        $(e).on('click', function () {
+    $navBarItem.each(function(i, e) {
+        $(e).on('click', function() {
             $('html, body').animate({
                 scrollTop: $('#' + $(e).data('anchor')).offset().top - navbarHeight
             }, 1000);
         });
     });
 
-    $initials.on('click', function () {
+    $initials.on('click', function() {
         $menuContainer.toggleClass('height0');
     });
 
@@ -325,7 +319,7 @@ function setNav() {
 }
 
 function setEducation() {
-    canvases.forEach(function (e) {
+    canvases.forEach(function(e) {
         var context = e.getContext('2d');
         context.lineWidth = 8;
         context.beginPath();
@@ -348,17 +342,48 @@ function setProjects() {
 
     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
 
-    var projectInfo = [[['Super Mario'], ['Java'], ['JavaFX'], ['A clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using JavaFX.']], [['MySQL-GUI'], ['Java'], ['Spring Framework | JDBC | Maven | Swing'], ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']], [['Jeopardy'], ['Java'], ['Servlets'], ['Jeopardy developed using java servlets in MVC Architecture.']], [['Falling Robots'], ['Java'], ['Becker Robots'], ['A simple game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']], [['Slot Machine'], ['PHP'], ['HTML, CSS'], ['Simple game created by using PHP single page session.']]];
+    var projectInfo = [
+        [
+            ['Super Mario'],
+            ['Java'],
+            ['JavaFX'],
+            ['A clone of first level of the classic NES Super Mario Bros with some added flavour of Dragon Ball Z anime. Made using JavaFX.']
+        ],
+        [
+            ['MySQL-GUI'],
+            ['Java'],
+            ['Spring Framework | JDBC | Maven | Swing'],
+            ['A basic MySQL GUI created in java. Allows few functions such as dynamically adding/removing data, tables and databases along with ability to modify the existing data.']
+        ],
+        [
+            ['Jeopardy'],
+            ['Java'],
+            ['Servlets'],
+            ['Jeopardy developed using java servlets in MVC Architecture.']
+        ],
+        [
+            ['Falling Robots'],
+            ['Java'],
+            ['Becker Robots'],
+            ['A simple game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.']
+        ],
+        [
+            ['Slot Machine'],
+            ['PHP'],
+            ['HTML, CSS'],
+            ['Simple game created by using PHP single page session.']
+        ]
+    ];
 
     function updateProjectInfo() {
-        $projectAttr.each(function (i) {
+        $projectAttr.each(function(i) {
             return fadeTransformText($projectAttr.eq(i), projectInfo[-carouselOffset][i]);
         });
 
         function fadeTransformText($element, text) {
             $projectAttrDiv.removeClass('fadein-fast').addClass('fadeout-fast');
 
-            setTimeout(function () {
+            setTimeout(function() {
                 $element.text(text);
                 $projectAttrDiv.removeClass('fadeout-fast').addClass('fadein-fast');
             }, 500);
@@ -366,24 +391,25 @@ function setProjects() {
     }
 
     updateProjectInfo();
-	
-	var carouselCount = $carouselContChild.length;
-	var translateOffset = 100 / carouselCount;
 
-    $('.stick-left').click(function () {
+    var carouselCount = $carouselContChild.length;
+    var translateOffset = 100 / carouselCount;
+
+    $('.stick-left').click(function() {
         switch (++carouselOffset) {
             case 0:
-                setTimeout(function () {
+                setTimeout(function() {
                     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
-                }, 800); break;
+                }, 800);
+                break;
 
             case 1:
                 carouselOffset = -carouselCount + 1;
-                setTimeout(function () {
+                setTimeout(function() {
                     $rightScrollButton.text('| <').css('letter-spacing', '-1vh');
                 }, 800);
             default:
-                setTimeout(function () {
+                setTimeout(function() {
                     $leftScrollButton.text('<<').css('letter-spacing', '-1.5vh');
                 }, 800);
         }
@@ -400,20 +426,21 @@ function setProjects() {
         $carouselContChild.eq(-carouselOffset).children().eq(0).removeClass('carousel-img-width-alt').addClass('carousel-img-width');
     });
 
-    $('.stick-right').click(function () {
+    $('.stick-right').click(function() {
         switch (--carouselOffset) {
             case (-carouselCount + 1):
-                setTimeout(function () {
+                setTimeout(function() {
                     $rightScrollButton.text('| <').css('letter-spacing', '-1vh');
-                }, 800); break;
+                }, 800);
+                break;
 
             case (-carouselCount):
                 carouselOffset = 0;
-                setTimeout(function () {
+                setTimeout(function() {
                     $leftScrollButton.text('> |').css('letter-spacing', '-1vh');
                 }, 800);
             default:
-                setTimeout(function () {
+                setTimeout(function() {
                     $rightScrollButton.text('>>').css('letter-spacing', '-1.5vh');
                 }, 800);
         };
@@ -434,8 +461,8 @@ function setProjects() {
 }
 
 function setContact() {
-    ['name', 'email', 'subject', 'message'].forEach(function (e) {
-        return $('#contact-' + e).on('input', function () {
+    ['name', 'email', 'subject', 'message'].forEach(function(e) {
+        return $('#contact-' + e).on('input', function() {
             return $('#contact-' + e + '-label').toggleClass('fadein-bottom', !!$('#contact-' + e).val());
         });
     });
@@ -443,18 +470,18 @@ function setContact() {
     var mailSuccess = false;
     var $contactStatus = $('#contact-status');
 
-    $('#contact-send').click(function (e) {
+    $('#contact-send').click(function(e) {
         e.preventDefault();
         if (mailSuccess)
             return;
-        
+
         $.ajax({
             url: "////formspree.io/jaskaranbir_singh@ymail.com",
             method: 'POST',
             data: $('#contact-form-container').serializeArray(),
             dataType: 'json',
 
-            success: function () {
+            success: function() {
                 $('#contact-send').addClass('contact-button-finalize');
                 $contactStatus.text('Mail Sent Successfully');
                 mailSuccess = true;
