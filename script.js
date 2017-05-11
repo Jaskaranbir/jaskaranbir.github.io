@@ -348,7 +348,7 @@ function setProjects() {
             ['Agar.io Clone'],
             ['Java, Javascript'],
             ['Ajax | CSS | HTML | JavaEE | Javascript | JSP/JSTL | MySQL | React.js | Websockets'],
-            ['A simple Agar.io clone developed using WebSocket and HTML on java.'],
+            ['A simple Agar.io (online realtime MMO) clone developed using WebSocket and HTML on java.'],
             ['https://github.com/Jaskaranbir/Agar.io-Clone']
         ],
         [
