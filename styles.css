@@ -888,7 +888,7 @@ body {
 
 #projects-carousel-container {
     display: table;
-    width: 500%;
+    width: 600%;
     height: inherit;
 }
 
@@ -993,7 +993,6 @@ body {
 
 .work-header {
     min-height: 2.3em;
-    overflow: auto;
     padding: 2px 5px;
     border-bottom: 5px solid rgb(228, 231, 218);
 }
@@ -1015,6 +1014,11 @@ body {
     top: 0.2em;
     height: 2em;
     float: right;
+}
+
+.work-logo-big {
+    top: -1em;
+    height: 3em;
 }
 
 .work-attrs {
