@@ -48,8 +48,6 @@ var config = {
   },
 
   plugins: [
-    new ExtractTextPlugin("[name].[contenthash].css"),
-
     new webpack.ProvidePlugin({
       $: 'jquery',
     }),

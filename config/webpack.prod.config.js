@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var baseWebpackConfig = require('./webpack.base.config');
 var merge = require('webpack-merge');
 var PurifyCSS = require('purifycss-webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var webpackConfig = merge(baseWebpackConfig, {
@@ -10,6 +11,8 @@ var webpackConfig = merge(baseWebpackConfig, {
   },
 
   plugins: [
+    new ExtractTextPlugin("[name].[contenthash].css"),
+
     new PurifyCSS({
       "styleExtensions": [
         '.css'
