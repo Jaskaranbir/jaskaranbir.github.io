@@ -10,18 +10,6 @@ var webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new ExtractTextPlugin("[name].[hash].css"),
 
-    new PurifyCSS({
-      "styleExtensions": [
-        '.css'
-      ],
-
-      verbose: true,
-      "paths": [
-        __dirname + '/../src/*.html',
-        __dirname + '/../src/scripts/*.js'
-      ],
-    }),
-
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: '../index.html',

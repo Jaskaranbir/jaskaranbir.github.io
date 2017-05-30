@@ -1430,6 +1430,18 @@ body {
         font-size: 12px;
         width: 240px;
     }
+    .edu-position-container {
+        margin-top: 15px;
+        text-align: center;
+    }
+    .edu-position,
+    .edu-position-name,
+    .edu-position-duration {
+        float: none;
+    }
+    .edu-position-divider {
+        margin-top: 0;
+    }
     #skills-text::after {
         font-size: 14px;
     }

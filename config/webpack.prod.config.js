@@ -4,6 +4,7 @@ var merge = require('webpack-merge');
 var PurifyCSS = require('purifycss-webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var webpackConfig = merge(baseWebpackConfig, {
   output: {
@@ -13,23 +14,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new ExtractTextPlugin("[name].[contenthash].css"),
 
-    new PurifyCSS({
-      "styleExtensions": [
-        '.css'
-      ],
-
-      verbose: true,
-      "paths": [
-        __dirname + '/../src/*.html',
-        __dirname + '/../src/scripts/*.js'
-      ],
-
-      "purifyOptions": {
-        "info": true,
-        "minify": true,
-        "rejected": false
-      }
-    }),
+    new OptimizeCSSPlugin(),
 
     new HtmlWebpackPlugin({
       template: './src/index.html',
