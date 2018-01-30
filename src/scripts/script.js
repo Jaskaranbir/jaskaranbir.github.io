@@ -24,6 +24,9 @@ $window.on('beforeunload', function() {
     $window.scrollTop(0);
 });
 
+// ==> The setTimeout functions are not nested to maintain independent behaviour
+// ==> (so changing a time of one setTimeout won't affect others)
+
 (function() {
     $('#greeting').hide().fadeIn(2000).delay(100).animate({
         'font-size': '3vh',
@@ -346,10 +349,22 @@ function setProjects() {
     var projectInfo = [
         [
             ['Agar.io Clone'],
-            ['Java, Javascript'],
-            ['Ajax | CSS | HTML | JavaEE | Javascript | JSP/JSTL | MySQL | React.js | Websockets'],
+            ['Java, JavaScript'],
+            [
+                'Vagrant | Docker | Ajax | CSS | HTML | JavaEE | Javascript |' +
+                'JSP/JSTL | MySQL | React.js | Websockets', 'Webpack', 'Maven', 'TravisCI'],
             ['A simple Agar.io (online realtime MMO) clone developed using WebSocket and HTML on java.'],
             ['https://github.com/Jaskaranbir/Agar.io-Clone']
+        ],
+        [
+            ['InstaPost'],
+            ['C#, JavaScript'],
+            [
+                'Vagrant | Docker | .NET Core | Entity Framework | ' +
+                'React.js | SQL Server | MongoDB | Webpack | TravisCI'
+            ],
+            ['A simple social media platform.'],
+            ['https://github.com/Jaskaranbir/InstaPost']
         ],
         [
             ['Super Mario'],
@@ -378,13 +393,6 @@ function setProjects() {
             ['Becker Robots'],
             ['A simple game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.'],
             ['https://github.com/Jaskaranbir/Falling-Robots']
-        ],
-        [
-            ['Slot Machine'],
-            ['PHP'],
-            ['HTML, CSS'],
-            ['Simple game created by using PHP single page session.'],
-            ['https://github.com/Jaskaranbir/PHP-Single-Page-Session']
         ]
     ];
 

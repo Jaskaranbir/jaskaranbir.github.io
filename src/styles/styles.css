@@ -4,7 +4,7 @@ body {
     background-attachment: fixed;
     padding: 0;
     margin: 0;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 #nav {
@@ -70,7 +70,7 @@ body {
     display: table-cell;
     text-align: center;
     top: 0;
-    padding-bottom: 0.6vh;
+    padding-bottom: 0.3vh;
     height: 4vh;
     list-style: none;
     font-size: 2.4vh;
@@ -138,7 +138,7 @@ body {
 }
 
 .header3 {
-    font-family: 'Roboto, sans-serif';
+    font-family: Roboto;
     font-size: 16px;
     font-weight: bold;
 }
@@ -173,8 +173,8 @@ body {
 
 #hello-text {
     font-family: bitter;
-    stroke-dasharray: 0;
-    stroke-dashoffset: 100;
+    stroke-dasharray: 0px;
+    stroke-dashoffset: 100px;
     -webkit-animation: text-outline-fadein-fast 5s linear;
     animation: text-outline-fadein-fast 5s linear;
     -webkit-animation-fill-mode: forwards;
@@ -189,7 +189,7 @@ body {
     30% {
         stroke: white;
         fill: rgba(0, 0, 0, 0.3);
-        stroke-dasharray: 800;
+        stroke-dasharray: 800px;
     }
     40% {
         fill: white;
@@ -208,7 +208,7 @@ body {
     30% {
         stroke: white;
         fill: rgba(0, 0, 0, 0.3);
-        stroke-dasharray: 800;
+        stroke-dasharray: 800px;
     }
     40% {
         fill: white;
@@ -263,7 +263,7 @@ body {
     cursor: pointer;
     opacity: 0.3;
     font-size: 6vh;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     width: 53px;
     -webkit-animation: fadeout 1s linear;
     animation: fadeout 1s linear;
@@ -312,7 +312,7 @@ body {
     -webkit-animation: marquee 30s linear infinite;
     animation: marquee 30s linear infinite;
     color: rgba(255, 255, 255, 0.5);
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
 }
 
 @-webkit-keyframes marquee {
@@ -351,6 +351,11 @@ body {
     background: linear-gradient(to right, transparent, #ED5446, transparent);
 }
 
+.emphasize {
+    font-weight: bold;
+    color: #e73d2d;
+    background-color: rgba(0, 0, 0, 0.06);
+}
 
 /*--------------------------------------------------------------------------------*/
 
@@ -368,7 +373,7 @@ body {
 #about-me-info {
     margin: 25px auto auto auto;
     width: 50%;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     line-height: 25px;
     text-align: justify;
 }
@@ -383,7 +388,7 @@ body {
     border: 2px solid black;
     padding: 5px 5px;
     cursor: pointer;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     font-size: 1.25em;
 }
 
@@ -416,7 +421,7 @@ body {
     width: 100%;
     height: 38px;
     margin-left: 20px;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     color: rgba(0, 0, 0, 0.8);
 }
 
@@ -493,7 +498,7 @@ body {
 .gpa {
     margin: 20px auto auto auto;
     padding: 0 10%;
-    width: 102px;
+    width: 138px;
     font-family: bitter;
     font-size: 20px;
     font-weight: bold;
@@ -538,6 +543,7 @@ body {
 
 .section-divider {
     margin-top: 55px;
+    height: 40px;
     border-bottom: none;
     border-left: none;
     border-right: none;
@@ -558,7 +564,7 @@ body {
 
 #skills {
     margin: 0 auto 50px auto;
-    padding-top: 20px;
+    padding-top: 5px;
 }
 
 #skills-text::after {
@@ -584,6 +590,7 @@ body {
     margin-top: -62px;
     border: none;
     border-left: 2px dotted rgba(0, 0, 0, 0.2);
+    z-index: -1;
 }
 
 .skill-dist-line::before {
@@ -591,7 +598,7 @@ body {
     position: absolute;
     top: -20px;
     left: -24px;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     opacity: 0.6;
 }
 
@@ -758,8 +765,8 @@ body {
     transform-origin: center;
     stroke-width: 5px;
     stroke: white;
-    stroke-dasharray: 1500;
-    stroke-dashoffset: 1500;
+    stroke-dasharray: 1500px;
+    stroke-dashoffset: 1500px;
     -webkit-transform: scale(0.2);
     transform: scale(0.2);
 }
@@ -774,7 +781,7 @@ body {
 @-webkit-keyframes dash {
     to {
         opacity: 1;
-        stroke-dashoffset: 0;
+        stroke-dashoffset: 0px;
         -webkit-transform: rotate(-90deg) scale(0.8);
         transform: rotate(-90deg) scale(0.8);
     }
@@ -783,7 +790,7 @@ body {
 @keyframes dash {
     to {
         opacity: 1;
-        stroke-dashoffset: 0;
+        stroke-dashoffset: 0px;
         -webkit-transform: rotate(-90deg) scale(0.8);
         transform: rotate(-90deg) scale(0.8);
     }
@@ -826,11 +833,11 @@ body {
 }
 
 #projects-text {
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     font-size: 50px;
     font-weight: bolder;
-    stroke-dasharray: 0;
-    stroke-dashoffset: 100;
+    stroke-dasharray: 0px;
+    stroke-dashoffset: 100px;
 }
 
 .text-outline {
@@ -845,8 +852,8 @@ body {
         stroke: white;
     }
     to {
-        stroke-dasharray: 100;
-        stroke-dashoffset: 0;
+        stroke-dasharray: 100px;
+        stroke-dashoffset: 0px;
     }
     30% {
         stroke: white;
@@ -863,8 +870,8 @@ body {
         stroke: white;
     }
     to {
-        stroke-dasharray: 100;
-        stroke-dashoffset: 0;
+        stroke-dasharray: 100px;
+        stroke-dashoffset: 0px;
     }
     30% {
         stroke: white;
@@ -877,7 +884,7 @@ body {
 }
 
 #projects-tagline-text {
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     font-size: 25px;
     fill: white;
     opacity: 0;
@@ -972,7 +979,7 @@ body {
     padding-bottom: 22px;
     background-color: #373634;
     color: white;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     z-index: 3;
 }
 
@@ -1013,7 +1020,7 @@ body {
     margin: 35px auto auto auto;
     text-align: left;
     border-left: 5px solid rgb(228, 231, 218);
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
 }
 
 .work-header {
@@ -1024,6 +1031,7 @@ body {
 
 .work-info {
     float: left;
+    min-width: 395px;
 }
 
 .work-title {
@@ -1079,7 +1087,7 @@ body {
     margin-top: 13px;
     text-align: left;
     font-size: 18px;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     font-weight: bold;
     top: 26px;
     -webkit-transition: all 0.2s;
@@ -1101,7 +1109,7 @@ body {
 .contact-form {
     display: block;
     width: 100%;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     font-size: 25px;
     border: none;
     border-bottom: 2px solid rgba(93, 89, 86, 0.65);
@@ -1169,14 +1177,14 @@ body {
 
 #contact-status {
     margin-top: 16px;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
 }
 
 #profiles-text {
     margin-top: 20px;
     margin-bottom: 25px;
     background-color: #E1E1E1;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     font-size: 30px;
     color: rgba(37, 38, 39, 0.86);
 }
@@ -1197,7 +1205,7 @@ body {
     margin-top: 5vh;
     width: 100%;
     color: rgba(255, 255, 255, 0.7);
-    font-family: Roboto, sans-serif;
+    font-family: Roboto;
     padding-top: 8px;
     padding-bottom: 8px;
 }
@@ -1487,7 +1495,7 @@ body {
         }
         100% {
             opacity: 0;
-            stroke-dashoffset: 0;
+            stroke-dashoffset: 0px;
             -webkit-transform: rotate(-90deg) scale(0.8);
             transform: rotate(-90deg) scale(0.8);
         }
@@ -1498,7 +1506,7 @@ body {
         }
         100% {
             opacity: 0;
-            stroke-dashoffset: 0;
+            stroke-dashoffset: 0px;
             -webkit-transform: rotate(-90deg) scale(0.8);
             transform: rotate(-90deg) scale(0.8);
         }
@@ -1567,8 +1575,6 @@ body {
     }
     #nav li {
         font-size: 1.5em;
-        margin-top: 0.4em;
-        padding-bottom: 0.6em;
     }
     .nav-triangle {
         display: none;
