@@ -1194,7 +1194,7 @@ body {
 }
 
 .profile-img {
-    width: 15%;
+    height: 40px;
 }
 
 
@@ -1548,9 +1548,6 @@ body {
     }
     #contact-form-container {
         width: 80%;
-    }
-    .profile-img {
-        width: 48%;
     }
 }
 

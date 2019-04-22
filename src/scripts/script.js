@@ -346,11 +346,22 @@ function setProjects () {
 
   const projectInfo = [
     [
+      ['Capstone Project'],
+      ['Golang, Angular'],
+      [
+        'Event-Sourcing | CQRS | Cassandra | MongoDB | Kafka | ' +
+        'Kubernetes | Docker | Ansible | Packer | TravisCI'
+      ],
+      ['Inventory-tracking and monitoring food-health using IOT sensors'],
+      ['#']
+    ],
+    [
       ['Agar.io Clone'],
       ['Java, JavaScript'],
       [
-        'Vagrant | Docker | Ajax | CSS | HTML | JavaEE | Javascript |' +
-        'JSP/JSTL | MySQL | React.js | Websockets', 'Webpack', 'Maven', 'TravisCI'],
+        'Vagrant | Docker | CSS | HTML | JavaEE | Javascript | ' +
+        'JSP/JSTL | MySQL | React.js | Websockets | Webpack | Maven | TravisCI'
+      ],
       ['A simple Agar.io (online realtime MMO) clone developed using WebSocket and HTML on java.'],
       ['https://github.com/Jaskaranbir/Agar.io-Clone']
     ],
@@ -384,13 +395,6 @@ function setProjects () {
       ['Servlets'],
       ['Jeopardy developed using java servlets in MVC Architecture.'],
       ['https://github.com/Jaskaranbir/Jeopardy_Java-Servlets']
-    ],
-    [
-      ['Falling Robots'],
-      ['Java'],
-      ['Becker Robots'],
-      ['A simple game created using basic multi-threading in which robots fall from top to bottom and player has to catch them.'],
-      ['https://github.com/Jaskaranbir/Falling-Robots']
     ]
   ];
 

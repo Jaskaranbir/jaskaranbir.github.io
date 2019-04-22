@@ -100,7 +100,7 @@
                         <div>Computer Systems Analyst</div>
                         <div>Sheridan College, Brampton, ON.</div>
                     </div>
-                    <div class="edu-school-time">2015 - Present</div>
+                    <div class="edu-school-time">2015 - 2019</div>
                 </div>
 
                 <div class="edu-grades-container">
@@ -238,7 +238,7 @@
                     </div>
                 </div>
 
-                <div class="gpa">GPA: 3.93/4.0</div>
+                <div class="gpa">GPA: 3.86/4.0</div>
 
                 <div class="edu-info edu-extra-curr">
                     <div class="edu-course-name">
@@ -335,12 +335,12 @@
                 <div id="projects-carousel">
                     <div id="projects-carousel-viewport">
                         <div id="projects-carousel-container" class="transition">
+                            <div><a target="_blank" href="https://github.com/Jaskaranbir/Agar.io-Clone"><img src="images/project_capstone.png" class="carousel-img-width transition" /></a></div>
                             <div><a target="_blank" href="https://github.com/Jaskaranbir/Agar.io-Clone"><img src="images/project_agario-clone.png" class="carousel-img-width transition" /></a></div>
                             <div><a target="_blank" href="https://github.com/Jaskaranbir/InstaPost"><img src="images/project_instapost.png" class="carousel-img-width-alt transition" /></a></div>
                             <div><a target="_blank" href="https://github.com/Jaskaranbir/Super-Mario"><img src="images/project_mario.png" class="carousel-img-width transition" /></a></div>
                             <div><a target="_blank" href="https://github.com/Jaskaranbir/MySQL_GUI"><img src="images/project_mysql.png" class="carousel-img-width-alt transition" /></a></div>
                             <div><a target="_blank" href="https://github.com/Jaskaranbir/Jeopardy_Java-Servlets"><img src="images/project_jeopardy.jpg" class="carousel-img-width-alt transition" /></a></div>
-                            <div><a target="_blank" href="https://github.com/Jaskaranbir/Falling-Robots"><img src="images/project_falling-robots.png" class="carousel-img-width-alt transition" /></a></div>
                         </div>
                     </div>
                 </div>
@@ -349,7 +349,7 @@
             <div id="project-desc">
                 <a target="_blank" href="https://github.com/Jaskaranbir/Super-Mario"><span class="project-name project-attr">Super Mario</span></a>
 
-                <div class="project-attr-div"><span class="project-attr-text">Language: </span><span class="project-attr"></span></div>
+                <div class="project-attr-div"><span class="project-attr-text">Languages: </span><span class="project-attr"></span></div>
 
                 <div class="project-attr-div"><span class="project-attr-text">Technologies:  </span><span class="project-attr"></span></div>
 
@@ -359,7 +359,51 @@
 
         <div id="work-exp" class="section-div">
             <div id="work-text" class="header4">Work Experience</div>
-            <div class="work-section">
+              <div class="work-section">
+                <div class="work-header">
+                    <div class="work-info">
+                        <div class="work-title">Software Developer - Royal Bank of Canada (Co-op)</div>
+                        <span class="work-area">Toronto, On</span>
+                        <span class="work-duration">January 2019 - April 2019</span>
+                    </div>
+                    <img class="work-logo work-logo-big" src="images/rbc-logo.svg" />
+                </div>
+                <div class="work-attrs">
+                    <ul>
+                        <li>Developed financial <span class="emphasize">REST API</span> using <span class="emphasize">Java</span> <span class="emphasize">(Spring boot)</span></li>
+                        <li>Developed internal GitHub-framework to automate development and performance-analytics</li>
+                        <ul>
+                            <li>Implemented <span class="emphasize">Webpack</span> pipeline and extensive plug-and-use <span class="emphasize">plugin-based</span> infrastructure</li>
+                            <li>Improved <span class="emphasize">scalability</span> and <span class="emphasize">maintainability</span> by implementing <span class="emphasize">sandboxed</span> infrastructure for plugins</li>
+                            <li>Used <span class="emphasize">Angular</span> to build frontend for managing framework and viewing analytics</li>
+                            <li>Developed plugins to automate code-linting for code-commits to GitHub</li>
+                            <li>Used <span class="emphasize">Pivotal Cloud Foundry</span> for deploying applications</li>
+                        </ul>
+                    </ul>
+                </div>
+
+                <br />
+
+                <div class="work-header">
+                    <div class="work-info">
+                        <div class="work-title">Undergraduate Researcher - Sheridan College</div>
+                        <span class="work-area">Brampton, On</span>
+                        <span class="work-duration">April 2018 - September 2018</span>
+                    </div>
+                    <img class="work-logo" src="images/sheridan-logo.svg" />
+                </div>
+                <div class="work-attrs">
+                    <ul>
+                        <li>Used <span class="emphasize">Terraform</span> and <span class="emphasize">Ansible</span> to provision <span class="emphasize">EC2</span> instances on <span class="emphasize">AWS</span></li>
+                        <li>Developed <span class="emphasize">Grafana</span> dashboard and <span class="emphasize">React-frontend</span> for monitoring sensors</li>
+                        <li>Developed mock-sensor backend for Grafana’s SimpleJSON plugin</li>
+                        <li>Used <span class="emphasize">Vagrant</span>, <span class="emphasize">Docker</span>/<span class="emphasize">Docker-Compose</span> for service-orchestration</li>
+                        <li>Worked with LoRa (Low Power, High Range) server and The Things Network for <span class="emphasize">IOT</span> projects</li>
+                    </ul>
+                </div>
+
+                <br />
+
                 <div class="work-header">
                     <div class="work-info">
                         <div class="work-title">Software Developer - eSentire (Co-op)</div>
@@ -375,9 +419,8 @@
                         <li>Used <span class="emphasize">Apache Kafka</span> for data streaming</li>
                         <li>Used <span class="emphasize">ELK</span> stack for aggregating, transforming, and querying logs from various services</li>
                         <li>Developed <span class="emphasize">microservices</span> in <span class="emphasize">Ruby</span>, and <span class="emphasize">Kubernetes</span> cron-jobs for monitoring and logging services</li>
-                        <li>Developed <span class="emphasize">Ruby gem</span> for comparing and validating JSON values using JSON templates <span class="emphasize">without conditional statements</span></li>
                         <li>Implemented <span class="emphasize">Nginx</span> internal endpoints for monitoring status of internally used services</li>
-                        <li>Improved performance and cost-efficiency by implementing batch data aggregation for transfer and storage to database (<span class="emphasize">DynamoDB</span>)</li>
+                        <li>•	Improved performance and cost-efficiency by implementing batch-processing backend for database (<span class="emphasize">DynamoDB</span>)</li>
                         <li>Developed logging wrapper libraries for <span class="emphasize">Node.js</span> and <span class="emphasize">Nginx</span> using defined format and output style</li>
                         <li>Developed UI components using <span class="emphasize">React.js</span>/<span class="emphasize">Redux</span></li>
                         <li>Consumed and developed <span class="emphasize">REST</span> APIs</li>
@@ -405,25 +448,6 @@
                         <li>Developed libraries for fetching and managing data from <span class="emphasize">REST APIs</span> more effectively</li>
                         <li>Fixed bugs from existing <span class="emphasize">Wordpress</span> plugins</li>
                         <li>Used <span class="emphasize">JIRA</span> for issue tracking and <span class="emphasize">Git/Bitbucket</span> for source control</li>
-                    </ul>
-                </div>
-
-                <br />
-
-                <div class="work-header">
-                    <div class="work-info">
-                        <div class="work-title">Customer Service - Tim Hortons (Full Time, Part Time)</div>
-                        <span class="work-area">Toronto, On</span>
-                        <span class="work-duration">May 2016 - Present</span>
-                    </div>
-                    <img class="work-logo" src="images/tims-logo.png" />
-                </div>
-                <div class="work-attrs">
-                    <ul>
-                        <li>Provide friendly, efficient customer service in a <span class="emphasize">fast-paced environment</span></li>
-                        <li>Process payments and <span class="emphasize">addressing customer concerns</span></li>
-                        <li><span class="emphasize">Upsell</span> menu items to increase restaurant profits</li>
-                        <li>Assissted in <span class="emphasize">training new emplyees</span> and <span class="emphasize">inventory management</span></li>
                     </ul>
                 </div>
             </div>
@@ -455,8 +479,15 @@
 
             <div id="profiles-text">PROFILES</div>
 
-            <div class="profile-img-container"><a href="http://stackoverflow.com/users/4948426/jaskaranbir-singh"><img src="images/so.svg" class="profile-img" /></a></div>
-            <div class="profile-img-container"><a href="https://github.com/Jaskaranbir"><img src="images/github.svg" class="profile-img" /></a></div>
+            <div class="profile-img-container">
+                <a href="https://github.com/Jaskaranbir"><img src="images/github.svg" class="profile-img" /></a>
+            </div>
+            <div class="profile-img-container">
+                <a href="https://www.linkedin.com/in/jaskaranbir-dhillon/"><img src="images/logo-linkedin.png" class="profile-img" /></a>
+            </div>
+            <div class="profile-img-container">
+                <a href="http://stackoverflow.com/users/4948426/jaskaranbir-singh"><img src="images/so.svg" class="profile-img" /></a>
+            </div>
         </div>
 
         <div id="site-info">
