@@ -1,19 +1,25 @@
-var webpack = require('webpack');
-var baseWebpackConfig = require('./webpack.base.config');
-var merge = require('webpack-merge');
-var PurifyCSS = require('purifycss-webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const merge = require('webpack-merge');
 
-var webpackConfig = merge(baseWebpackConfig, {
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+
+const baseWebpackConfig = require('./webpack.base.config');
+
+module.exports = merge(baseWebpackConfig, {
+  mode: 'production',
   output: {
     chunkFilename: '[id].[chunkhash].js'
   },
 
-  plugins: [
-    new ExtractTextPlugin("[name].[contenthash].css"),
+  optimization: {
+    mergeDuplicateChunks: true,
+    minimize: true,
+    namedModules: true,
+    removeAvailableModules: true,
+    removeEmptyChunks: true
+  },
 
+  plugins: [
     new OptimizeCSSPlugin(),
 
     new HtmlWebpackPlugin({
@@ -25,13 +31,6 @@ var webpackConfig = merge(baseWebpackConfig, {
         collapseWhitespace: true,
         removeAttributeQuotes: false
       }
-    }),
-
-    new webpack.optimize.UglifyJsPlugin({
-      dead_code: true,
-      comments: false
     })
   ]
 });
-
-module.exports = webpackConfig;

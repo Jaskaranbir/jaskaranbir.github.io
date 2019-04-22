@@ -1,15 +1,14 @@
-var baseWebpackConfig = require('./webpack.base.config');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var merge = require('webpack-merge');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var PurifyCSS = require('purifycss-webpack');
+const merge = require('webpack-merge');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var webpackConfig = merge(baseWebpackConfig, {
+const baseWebpackConfig = require('./webpack.base.config');
+
+module.exports = merge(baseWebpackConfig, {
   watch: true,
+  mode: 'development',
 
   plugins: [
-    new ExtractTextPlugin("[name].[hash].css"),
-
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: '../index.html',
@@ -17,5 +16,3 @@ var webpackConfig = merge(baseWebpackConfig, {
     })
   ]
 });
-
-module.exports = webpackConfig;

@@ -1,39 +1,51 @@
-var webpack = require('webpack');
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-var config = {
+module.exports = {
   entry: {
     app: './src/main'
   },
+  target: 'web',
+
   output: {
-    path: __dirname + '/../dist_res',
+    path: `${__dirname}/../dist_res`,
     filename: '[name].[hash].js',
     publicPath: './dist_res/'
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         // For injecting generated hashed image names into HTML
         test: /\.html$/,
         use: [{
-          loader: "html-loader"
+          loader: 'html-loader'
         }]
       },
 
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader!postcss-loader",
-          publicPath: ''
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: './'
+            }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            }
+          },
+          'postcss-loader'
+        ]
       },
 
       {
         test: /\.(woff2?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file-loader?name=fonts/[name].[hash:7].[ext]"
+        loader: 'file-loader?name=fonts/[name].[hash:7].[ext]'
       },
 
       {
@@ -48,12 +60,14 @@ var config = {
   },
 
   plugins: [
+    new WebpackCleanupPlugin(),
+
     new webpack.ProvidePlugin({
-      $: 'jquery',
+      $: 'jquery'
     }),
 
-    new WebpackCleanupPlugin()
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css'
+    })
   ]
 };
-
-module.exports = config;
