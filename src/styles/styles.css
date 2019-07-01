@@ -431,6 +431,11 @@ body {
     text-align: left;
 }
 
+.edu-course-name span {
+    font-weight: normal;
+    font-style: italic;
+}
+
 .edu-bottom-margin {
     padding-bottom: 3px;
     border-bottom: 2px solid rgba(93, 89, 86, 0.6);

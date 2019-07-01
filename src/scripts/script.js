@@ -152,7 +152,7 @@ function setWindowScrollEvents () {
 
   const $sectionDivs = $('.section-div');
   const $wrapper = $('#wrapper');
-  var $projects = $('#projects');
+  const $projects = $('#projects');
 
   let changeNavColor = false;
   let eduAnimDone = false;
@@ -175,8 +175,9 @@ function setWindowScrollEvents () {
     }
 
     if (!scrollAnimsDone) {
+      // console.log('111111111111111')
       if (!eduAnimDone) doEducationAnimation(bottomScroll);
-      else if (!skillAnimDone) doSkillAnimation(bottomScroll);
+      // else if (!skillAnimDone) doSkillAnimation(bottomScroll);
       else doProjectsAnimation(bottomScroll);
     }
 
@@ -264,15 +265,19 @@ function setWindowScrollEvents () {
       })();
   }
 
-  function doSkillAnimation (bottomScroll) {
-    $skillBars.each((i, e) => {
-      if (bottomScroll <= $(e).offset().top) return;
-      $(e).addClass(`width${$(e).data('progress')}`);
-      if (i === skillBarCount) skillAnimDone = true;
-    });
-  }
+  // TODO: Find a better way to represent skills and change code accordingly
+  // function doSkillAnimation (bottomScroll) {
+  //   $skillBars.each((i, e) => {
+  //     if (bottomScroll <= $(e).offset().top) return;
+  //     $(e).addClass(`width${$(e).data('progress')}`);
+  //     if (i === skillBarCount) skillAnimDone = true;
+  //   });
+  // }
 
   function doProjectsAnimation (bottomScroll) {
+    // console.log(bottomScroll)
+    // console.log($('#projects-text-svg').offset().top + $('#projects-text-svg').outerWidth() / 1.5)
+    // console.log('///////////////')
     if (bottomScroll > $('#projects-text-svg').offset().top + $('#projects-text-svg').outerWidth() / 1.5) {
       $('#cir1').addClass('stroke-circle');
       $('#cir2').addClass('pop-circle');
